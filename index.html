@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button class="theme-toggle-button" id="theme-toggle">Toggle Theme</button>
+
+    <div class="container">
+
+        <header>
+            <h1>My Portfolio & Writing Projects</h1>
+            <p>A collection of my work, including Adawriter and Morada.</p>
+        </header>
+
+        <main>
+            <section id="writing">
+                <h2>Writing Tools</h2>
+                <ul>
+                    <li><a href="./adawriter.html">Adawriter</a></li>
+                    <li><a href="./morada.html">Morada (The Writing Program)</a></li>
+                </ul>
+            </section>
+
+            <hr>
+
+            <section id="projects">
+                <h2>Project Directory</h2>
+                <ul>
+                    <li><a href="./project-01/">Project One</a></li>
+                    <li><a href="./project-02/">Project Two</a></li>
+                    <li><a href="./project-03/">Project Three</a></li>
+                </ul>
+            </section>
+
+            <hr>
+
+            <section id="signup">
+                <h2>Get Updates</h2>
+                <p>Sign up to receive updates about new projects and articles.</p>
+                <form id="signup-form" class="signup-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="post">
+                    <input type="email" name="email" placeholder="your.email@example.com" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+                <p id="form-status"></p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Your Name</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const signupForm = document.getElementById('signup-form');
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                themeToggle.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Event listener for the toggle button
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Check for saved theme in localStorage or user's OS preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+        });
+
+        // Handle the signup form submission with AJAX
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const data = new FormData(form);
+            const status = document.getElementById('form-status');
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.textContent = "Thanks for signing up!";
+                    form.reset();
+                } else {
+                    status.textContent = "Oops! There was a problem submitting your form.";
+                }
+            } catch (error) {
+                status.textContent = "Oops! There was a problem submitting your form.";
+            }
+        }
+
+        signupForm.addEventListener("submit", handleFormSubmit);
+    </script>
+
+</body>
+</html>
