@@ -95,3 +95,103 @@ body.dark-mode .signup-form button {
     background-color: #8ab4f8;
     color: #121212;
 }
+
+/* Project Card Styles */
+.project-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem; /* Replaces li margin-bottom */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.project-card h3 {
+    margin-top: 0;
+    border-bottom: none; /* Override general h rule */
+}
+
+.project-card p {
+    margin-bottom: 1rem;
+}
+
+.project-links {
+    text-align: right;
+    font-size: 0.9em;
+}
+
+/* Add spacing for icons in project links */
+.project-links i {
+    margin-right: 0.3em;
+}
+
+/* Dark Mode for Project Cards */
+body.dark-mode .project-card {
+    background-color: #1e1e1e;
+    border-color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem; /* Reduce padding on small screens */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Make main heading smaller */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Make section headings smaller */
+    }
+
+    .project-card {
+        padding: 1rem; /* Reduce padding inside cards */
+    }
+
+    /* Stack form elements vertically */
+    .signup-form input[type="email"],
+    .signup-form button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        box-sizing: border-box; /* Ensure padding doesn't break layout */
+    }
+}
+
+/* Back to Top Button */
+#back-to-top-btn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #0066cc;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%; /* Makes it circular */
+    font-size: 18px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+#back-to-top-btn:hover {
+    background-color: #0052a3;
+}
+
+body.dark-mode #back-to-top-btn {
+    background-color: #8ab4f8;
+    color: #121212;
+}
