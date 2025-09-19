@@ -97,6 +97,68 @@ body.dark-mode .signup-form button {
     color: #121212;
 }
 
+/* Feedback Form Styles */
+#feedback-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #3a4740; /* Dark green-gray */
+}
+
+body.dark-mode #feedback-form label {
+    color: #ecf0f1; /* Light gray */
+}
+
+#feedback-form input[type="text"],
+#feedback-form input[type="email"],
+#feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #c8d4cc; /* Muted green-gray border */
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding doesn't break layout */
+    background-color: #f0f5f2; /* Light green-gray */
+    color: #3a4740;
+}
+
+body.dark-mode #feedback-form input[type="text"],
+body.dark-mode #feedback-form input[type="email"],
+body.dark-mode #feedback-form textarea {
+    border: 1px solid #4a627a; /* Darker blue-gray border */
+    background-color: #34495e; /* Darker blue-gray */
+    color: #ecf0f1;
+}
+
+#feedback-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+#feedback-form button[type="submit"] {
+    padding: 10px 15px;
+    border: none;
+    background-color: #2e8b57; /* Sea green */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#feedback-form button[type="submit"]:hover {
+    background-color: #257a4a; /* Darker sea green */
+}
+
+body.dark-mode #feedback-form button[type="submit"] {
+    background-color: #66bb6a; /* Lighter green */
+    color: #121212;
+}
+
+body.dark-mode #feedback-form button[type="submit"]:hover {
+    background-color: #5cb85c; /* Medium green */
+}
+
+
 /* Project Card Styles */
 .project-card {
     background-color: #f0f5f2; /* Light green-gray */
