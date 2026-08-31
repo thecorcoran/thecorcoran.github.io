@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave Feedback</title>
+    <title>Project Feedback — Learning Folks</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -11,66 +11,112 @@
 <body>
 
     <div class="container">
-        <header>
-            <h1>Leave Your Feedback</h1>
-            <p>We appreciate your thoughts on our projects!</p>
+        <!-- Top Navigation -->
+        <nav class="navbar">
+            <a href="./index.html" class="brand">
+                <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+            </a>
+            <button class="theme-toggle-button" id="theme-toggle" aria-label="Toggle visual theme">
+                <i class="fa-solid fa-moon"></i> Dark Mode
+            </button>
+        </nav>
+
+        <header class="hero">
+            <h1>Leave Feedback</h1>
+            <p>Have comments, suggestions, or ideas for any of the projects? Let me know below.</p>
         </header>
 
         <main>
-            <section id="feedback-form-section">
+            <section class="card-section">
                 <form id="feedback-form" action="https://formspree.io/f/mqadvwvo" method="post">
-                    <label for="name">Name (Optional):</label>
-                    <input type="text" id="name" name="name">
+                    <div class="form-group">
+                        <label for="name">Your Name (Optional)</label>
+                        <input type="text" id="name" name="name" placeholder="Alex Smith">
+                    </div>
 
-                    <label for="email">Email (Optional, for reply):</label>
-                    <input type="email" id="email" name="email">
+                    <div class="form-group">
+                        <label for="email">Your Email (Optional, if you'd like a reply)</label>
+                        <input type="email" id="email" name="email" placeholder="alex@example.com">
+                    </div>
 
-                    <label for="project">Which project is this feedback for? (Optional):</label>
-                    <input type="text" id="project" name="project">
+                    <div class="form-group">
+                        <label for="project">Project / Tool (Optional)</label>
+                        <input type="text" id="project" name="project" placeholder="e.g. Adawriter, Adventure Books">
+                    </div>
 
-                    <label for="message">Your Feedback:</label>
-                    <textarea id="message" name="message" rows="8" required></textarea>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Write your thoughts here..." required></textarea>
+                    </div>
 
-                    <button type="submit">Submit Feedback</button>
+                    <button type="submit" class="btn-primary">Submit Feedback</button>
                 </form>
-                <p id="form-status"></p>
+                <p id="form-status" style="margin-top: 1rem; font-weight: 500;"></p>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2025 Learning Folks</p>
+            <p>&copy; 2026 Jonathan Corcoran &middot; Learning Folks</p>
         </footer>
     </div>
 
     <script>
-        const feedbackForm = document.getElementById('feedback-form');
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const data = new FormData(form);
-            const status = document.getElementById('form-status');
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const feedbackForm = document.getElementById('feedback-form');
 
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    status.textContent = "Thanks for your feedback!";
-                    form.reset();
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    body.classList.add('dark-mode');
+                    themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+                    localStorage.setItem('theme', 'dark');
                 } else {
-                    status.textContent = "Oops! There was a problem submitting your feedback.";
+                    body.classList.remove('dark-mode');
+                    themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
+                    localStorage.setItem('theme', 'light');
                 }
-            } catch (error) {
-                status.textContent = "Oops! There was a problem submitting your feedback.";
             }
-        }
-        feedbackForm.addEventListener("submit", handleFormSubmit);
-    </script>
 
+            themeToggle.addEventListener('click', () => {
+                setTheme(body.classList.contains('dark-mode') ? 'light' : 'dark');
+            });
+
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+
+            feedbackForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const form = event.target;
+                const data = new FormData(form);
+                const status = document.getElementById('form-status');
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        status.textContent = "Thank you! Your feedback has been received.";
+                        status.style.color = "var(--primary)";
+                        form.reset();
+                    } else {
+                        status.textContent = "Oops! There was a problem submitting your feedback.";
+                        status.style.color = "#e11d48";
+                    }
+                } catch {
+                    status.textContent = "Oops! There was a problem submitting your feedback.";
+                    status.style.color = "#e11d48";
+                }
+            });
+        });
+    </script>
 </body>
 </html>

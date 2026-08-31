@@ -3,187 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Folks</title>
+    <title>Learning Folks — Projects & Writing</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <button class="theme-toggle-button" id="theme-toggle">Toggle Theme</button>
-
     <div class="container">
+        <!-- Top Navigation -->
+        <nav class="navbar">
+            <a href="./index.html" class="brand">Learning Folks</a>
+            <button class="theme-toggle-button" id="theme-toggle" aria-label="Toggle visual theme">
+                <i class="fa-solid fa-moon"></i> Dark Mode
+            </button>
+        </nav>
 
-        <header>
-            <h1>My Portfolio & Writing Projects</h1>
-            <p>A collection of my work, including Adawriter and Morada.</p>
+        <!-- Hero Header -->
+        <header class="hero">
+            <h1>Portfolio & Writing Projects</h1>
+            <p>A collection of software experiments, writing tools, and educational projects.</p>
         </header>
 
         <main>
+            <!-- Writing Tools Section -->
             <section id="writing">
-                <h2>Writing Tools</h2>
-                <ul>
-                    <li><a href="./adawriter.html">Adawriter</a></li>
-                    <li><a href="./morada.html">Morada (The Writing Program)</a></li>
-                </ul>
+                <h2><i class="fa-solid fa-feather-pointed"></i> Writing Tools</h2>
+                <div class="writing-list">
+                    <a href="./adawriter.html" class="writing-card">
+                        <h3>Adawriter</h3>
+                        <p>Distraction-free, minimal writing environment.</p>
+                    </a>
+                    <a href="./morada.html" class="writing-card">
+                        <h3>Morada</h3>
+                        <p>A structured writing and drafting program.</p>
+                    </a>
+                </div>
             </section>
 
-            <hr>
-
+            <!-- Project Directory -->
             <section id="projects">
-                <h2>Project Directory</h2>
-                <ul>
+                <h2><i class="fa-solid fa-code-branch"></i> Project Directory</h2>
+                <ul class="projects-grid">
                     <li>
                         <div class="project-card">
-                            <h3>Adventure Books</h3>
-                            <p>An interactive, text-based adventure game built with HTML, CSS, and JavaScript.</p>
+                            <div>
+                                <h3>Adventure Books</h3>
+                                <p>An interactive, text-based adventure game built with HTML, CSS, and JavaScript.</p>
+                            </div>
                             <div class="project-links">
-                                <a href="https://thecorcoran.github.io/adventurebooks/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a> | <a href="https://github.com/thecorcoran/adventurebooks" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+                                <a href="https://thecorcoran.github.io/adventurebooks/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/thecorcoran/adventurebooks" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-github"></i> Repository
+                                </a>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="project-card">
-                            <h3>GreatBooks</h3>
-                            <p>A curated list of influential books, presented in a clean, readable interface.</p>
+                            <div>
+                                <h3>GreatBooks</h3>
+                                <p>A curated list of influential literature, presented in a clean, readable interface.</p>
+                            </div>
                             <div class="project-links">
-                                <a href="https://github.com/thecorcoran/GreatBooks" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a> | <a href="https://github.com/thecorcoran/GreatBooks" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+                                <a href="https://thecorcoran.github.io/GreatBooks/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/thecorcoran/GreatBooks" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-github"></i> Repository
+                                </a>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="project-card">
-                            <h3>MiniBook</h3>
-                            <p>A simple, responsive e-reader interface for displaying book content.</p>
+                            <div>
+                                <h3>MiniBook</h3>
+                                <p>A simple, responsive e-reader interface for displaying formatted book content.</p>
+                            </div>
                             <div class="project-links">
-                                <a href="https://github.com/thecorcoran/MiniBook.git" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a> | <a href="https://github.com/thecorcoran/MiniBook.git" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+                                <a href="https://thecorcoran.github.io/MiniBook/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/thecorcoran/MiniBook" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-github"></i> Repository
+                                </a>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="project-card">
-                            <h3>OnTheFrig</h3>
-                            <p>A web application to manage your refrigerator contents and reduce food waste.</p>
+                            <div>
+                                <h3>OnTheFrig</h3>
+                                <p>A web application to manage refrigerator inventory and reduce food waste.</p>
+                            </div>
                             <div class="project-links">
-                                <a href="https://github.com/thecorcoran/OnTheFrig/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a> | <a href="https://github.com/thecorcoran/OnTheFrig/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+                                <a href="https://thecorcoran.github.io/OnTheFrig/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/thecorcoran/OnTheFrig" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-brands fa-github"></i> Repository
+                                </a>
                             </div>
                         </div>
                     </li>
                 </ul>
             </section>
 
-            <section id="signup">
+            <!-- Newsletter & Feedback Section -->
+            <section id="signup" class="card-section">
                 <h2>Get Updates</h2>
-                <p>Sign up to receive updates about new projects and articles.</p>
-                <p>Have comments on a project? <a href="./comments.html">Leave your feedback here!</a></p>
+                <p>Sign up to receive updates about new tools and writing projects.</p>
                 <form id="signup-form" class="signup-form" action="https://formspree.io/f/mqadvwvo" method="post">
                     <input type="email" name="email" placeholder="your.email@example.com" required>
-                    <button type="submit">Sign Up</button>
+                    <button type="submit" class="btn-primary">Sign Up</button>
                 </form>
-                <p id="form-status"></p>
+                <p id="form-status" style="margin-top: 0.5rem; font-weight: 500;"></p>
+                <p style="margin-top: 1.25rem; margin-bottom: 0;">Have feedback on a project? <a href="./comments.html" style="color: var(--primary);">Leave your comments here &rarr;</a></p>
             </section>
-
-            <hr>
         </main>
 
         <footer>
-            <p>&copy; 2025 Your Name</p>
+            <p>&copy; 2026 Jonathan Corcoran &middot; Learning Folks</p>
         </footer>
-
     </div>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top-btn" title="Go to top" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const signupForm = document.getElementById('signup-form');
-        const backToTopButton = document.getElementById('back-to-top-btn');
-
-        // Function to set the theme
-        function setTheme(theme) {
-            if (theme === 'dark') {
-                body.classList.add('dark-mode');
-                themeToggle.textContent = 'Light Mode';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.classList.remove('dark-mode');
-                themeToggle.textContent = 'Dark Mode';
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        // Event listener for the toggle button
-        themeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                setTheme('light');
-            } else {
-                setTheme('dark');
-            }
-        });
-
-        // Check for saved theme in localStorage or user's OS preference
         document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const backToTopButton = document.getElementById('back-to-top-btn');
+            const signupForm = document.getElementById('signup-form');
+
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    body.classList.add('dark-mode');
+                    themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            themeToggle.addEventListener('click', () => {
+                setTheme(body.classList.contains('dark-mode') ? 'light' : 'dark');
+            });
+
+            // Theme initialization
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
             if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 setTheme('dark');
             } else {
                 setTheme('light');
             }
-        });
 
-        // Handle the signup form submission with AJAX
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const data = new FormData(form);
-            const status = document.getElementById('form-status');
-
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    status.textContent = "Thanks for signing up!";
-                    form.reset();
+            // Scroll to Top visibility and trigger
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    backToTopButton.style.display = 'block';
                 } else {
-                    status.textContent = "Oops! There was a problem submitting your form.";
+                    backToTopButton.style.display = 'none';
                 }
-            } catch (error) {
-                status.textContent = "Oops! There was a problem submitting your form.";
-            }
-        }
+            });
 
-        signupForm.addEventListener("submit", handleFormSubmit);
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
-        // --- Back to Top Button Logic ---
+            // Formspree AJAX handler
+            signupForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const form = event.target;
+                const data = new FormData(form);
+                const status = document.getElementById('form-status');
 
-        // Show the button when the user scrolls down 200px from the top
-        window.onscroll = function() {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                backToTopButton.style.display = "block";
-            } else {
-                backToTopButton.style.display = "none";
-            }
-        };
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
 
-        // When the user clicks on the button, scroll to the top of the document smoothly
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+                    if (response.ok) {
+                        status.textContent = "Thanks for signing up!";
+                        status.style.color = "var(--primary)";
+                        form.reset();
+                    } else {
+                        status.textContent = "Oops! There was a problem submitting your form.";
+                        status.style.color = "#e11d48";
+                    }
+                } catch {
+                    status.textContent = "Oops! There was a problem submitting your form.";
+                    status.style.color = "#e11d48";
+                }
             });
         });
-
     </script>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top-btn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
-
 </body>
 </html>
