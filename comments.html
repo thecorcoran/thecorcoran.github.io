@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Feedback & Inquiries · Jonathan M. Corcoran</title>
-  <meta name="description" content="Send comments, pedagogical feedback, questions, or ideas directly to Jonathan M. Corcoran regarding his open educational and reading projects.">
+  <title>Send a Note · Jonathan M. Corcoran</title>
+  <meta name="description" content="Send comments, questions, or ideas directly to Jonathan M. Corcoran regarding working projects and notes.">
   <meta name="author" content="Jonathan M. Corcoran">
 
   <!-- Google Fonts: Cormorant Garamond & Inter -->
@@ -25,7 +25,7 @@
     <div class="header-inner">
       <a href="./index.html" class="brand-title">
         <span class="brand-name">Jonathan M. Corcoran</span>
-        <span class="brand-sub">← Return to Project Hub</span>
+        <span class="brand-sub">← Return to Projects</span>
       </a>
 
       <nav class="nav-links">
@@ -49,10 +49,10 @@
     <section class="contact-section">
       <div class="contact-card">
         <div class="contact-intro">
-          <span class="about-eyebrow">Project Feedback & Collaboration</span>
-          <h1 class="about-title" style="font-size: 2.5rem; margin-bottom: 0.75rem;">Leave a Comment or Inquiry</h1>
+          <span class="about-eyebrow">Direct Contact</span>
+          <h1 class="about-title" style="font-size: 2.5rem; margin-bottom: 0.75rem;">Send a Note or Feedback</h1>
           <p class="contact-desc">
-            Have thoughts, classroom observations, bug reports, or suggestions for any tool or curriculum? Send your note below. You can also write directly to <a href="mailto:thecorcoran@gmail.com" class="inline-email">thecorcoran@gmail.com</a>.
+            Have thoughts, reflections, questions, or ideas about any of the projects? You can write below or email me directly at <a href="mailto:thecorcoran@gmail.com" class="inline-email">thecorcoran@gmail.com</a>.
           </p>
         </div>
 
@@ -60,19 +60,19 @@
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name <span class="label-opt">(Optional)</span></label>
-              <input type="text" id="name" name="name" placeholder="e.g. Marie Curie" autocomplete="name">
+              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name">
             </div>
 
             <div class="form-group">
               <label for="email">Your Email <span class="label-opt">(Optional, for a response)</span></label>
-              <input type="email" id="email" name="email" placeholder="marie@example.com" autocomplete="email">
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
             </div>
           </div>
 
           <div class="form-group">
-            <label for="project-select">Project / Context</label>
+            <label for="project-select">Topic / Project Reference</label>
             <select id="project-select" name="project" class="form-select">
-              <option value="General Feedback">General Comment / Inquiry</option>
+              <option value="General Note">General Note / Hello</option>
               <option value="The Curriculum of the River">The Curriculum of the River (MS Math)</option>
               <option value="The Gabriel Marcel Reader">The Gabriel Marcel Reader</option>
               <option value="Adventure Books">Adventure Books</option>
@@ -86,13 +86,13 @@
 
           <div class="form-group">
             <label for="message">Your Message <span class="label-req">*</span></label>
-            <textarea id="message" name="message" rows="6" placeholder="Write your feedback, ideas, or observations here..." required></textarea>
+            <textarea id="message" name="message" rows="6" placeholder="Write your thoughts or feedback here..." required></textarea>
           </div>
 
           <div class="form-actions">
             <button type="submit" id="submit-btn" class="btn btn-primary">
               <i class="fa-solid fa-paper-plane"></i>
-              <span>Submit Feedback</span>
+              <span>Send Message</span>
             </button>
             <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
           </div>
@@ -107,10 +107,10 @@
     <div class="footer-inner">
       <div class="footer-left">
         <p class="footer-brand">Jonathan M. Corcoran</p>
-        <p class="footer-geo">Olympia, Washington</p>
+        <p class="footer-geo">Pacific Northwest</p>
       </div>
       <div class="footer-links">
-        <a href="./index.html">← Back to Portfolio</a>
+        <a href="./index.html">← Back to Projects</a>
         <span>·</span>
         <a href="mailto:thecorcoran@gmail.com">thecorcoran@gmail.com</a>
       </div>
@@ -164,7 +164,7 @@
         const originalBtnHtml = submitBtn.innerHTML;
 
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Submitting...</span>';
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending...</span>';
         formStatus.textContent = '';
         formStatus.className = 'form-status';
 
@@ -176,7 +176,7 @@
           });
 
           if (response.ok) {
-            formStatus.textContent = '✓ Thank you! Your feedback has been received.';
+            formStatus.textContent = '✓ Thank you! Your message has been received.';
             formStatus.className = 'form-status status-success';
             form.reset();
           } else {
@@ -184,7 +184,7 @@
             if (errData && errData.errors) {
               formStatus.textContent = 'Notice: ' + errData.errors.map(err => err.message).join(', ');
             } else {
-              formStatus.textContent = 'Oops! There was a problem submitting your feedback.';
+              formStatus.textContent = 'Oops! There was a problem submitting your message.';
             }
             formStatus.className = 'form-status status-error';
           }
