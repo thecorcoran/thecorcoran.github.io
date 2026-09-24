@@ -3,377 +3,721 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonathan M. Corcoran · Projects & Tools</title>
-  <meta name="description" content="Projects, open curriculum frameworks, digital readers, and workshop journals by Jonathan M. Corcoran.">
-  
-  <!-- Fonts -->
+  <title>Jonathan M. Corcoran · Projects, Curriculum & Tools</title>
+  <meta name="description" content="Personal portfolio and public project hub for Jonathan M. Corcoran. Classical mathematics curriculum, digital readers, distraction-free writing tools, and homestead timber craft in Olympia, Washington.">
+  <meta name="author" content="Jonathan M. Corcoran">
+  <meta property="og:title" content="Jonathan M. Corcoran · Projects, Curriculum & Tools">
+  <meta property="og:description" content="Open curriculum frameworks, contemplative digital reading tools, appliance hardware, and homestead build journals.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thecorcoran.github.io/">
+
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Inter (Clean UI Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            parchment: '#faf9f5',
-            cream: '#f4f2e9',
-            river: {
-              900: '#14233c',
-              800: '#1d3356',
-              700: '#274777',
-              50: '#f0f5fb'
-            },
-            amberwood: '#9c4221',
-            amberwoodLight: '#c05621',
-            borderParchment: '#e5e1d3'
-          },
-          fontFamily: {
-            cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
-          }
-        }
-      }
-    };
-  </script>
-  
-  <style>
-    body {
-      background-color: #faf9f5;
-      color: #1e2530;
-    }
-    .card-hover {
-      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .card-hover:hover {
-      border-color: #14233c;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px -4px rgba(20, 35, 60, 0.08);
-    }
-  </style>
-</head>
-<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-river-900 selection:text-white">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- MINIMAL HEADER -->
-  <header class="border-b border-borderParchment bg-white/80 backdrop-blur-sm sticky top-0 z-20">
-    <div class="max-w-5xl mx-auto px-6 py-3.5 flex items-center justify-between">
-      <a href="#top" class="font-cormorant font-bold text-2xl text-river-900 tracking-tight hover:text-amberwood transition">
-        Jonathan M. Corcoran
+  <!-- Shared Unified Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-parchment">
+
+  <!-- TOP STICKY NAVBAR -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="brand-title">
+        <span class="brand-name">Jonathan M. Corcoran</span>
+        <span class="brand-sub">Olympia, Washington</span>
       </a>
-      <div class="flex items-center space-x-5 text-xs font-medium uppercase tracking-wider">
-        <button onclick="toggleAboutModal()" class="text-slate-600 hover:text-river-900 underline transition">
-          About Me
-        </button>
-        <a href="https://github.com/thecorcoran" target="_blank" class="text-slate-600 hover:text-river-900 transition">
-          GitHub ↗
+
+      <nav class="nav-links">
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="https://github.com/thecorcoran" target="_blank" rel="noopener noreferrer" class="nav-link nav-github" title="GitHub Profile">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub ↗</span>
         </a>
-      </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle visual theme" title="Toggle dark / light mode">
+          <i class="fa-solid fa-moon"></i>
+          <span class="theme-label">Dark</span>
+        </button>
+      </nav>
     </div>
   </header>
 
-  <!-- MAIN CONTAINER (COMPACT, MINIMAL SCROLL) -->
-  <main class="flex-1 max-w-5xl mx-auto px-6 py-8 w-full space-y-6" id="top">
+  <!-- MAIN WRAPPER -->
+  <main class="main-content" id="top">
 
-    <!-- BRIEF SECTION HEADING -->
-    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-borderParchment pb-3">
-      <h1 class="font-cormorant text-3xl font-bold text-river-900">
-        Active Works & Projects
+    <!-- HERO INTRODUCTION -->
+    <section class="hero-section">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>Independent Builder & Educator</span>
+      </div>
+      <h1 class="hero-title">
+        Open Curricula, Digital Reading Tools & Homestead Craft
       </h1>
-      <span class="text-xs text-slate-500 uppercase tracking-wider">
-        Live Sites · Applications · Build Journals
-      </span>
-    </div>
+      <p class="hero-intro">
+        A working archive of classical mathematics curricula, multilingual digital readers, distraction-free writing instruments, and traditional timber framing based out of the Pacific Northwest.
+      </p>
 
-    <!-- 8-CARD COMPACT GRID -->
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fa-solid fa-layer-group"></i> Explore 8 Active Works
+        </a>
+        <a href="#about" class="btn btn-secondary">
+          <i class="fa-solid fa-compass"></i> About the Vision
+        </a>
+      </div>
+    </section>
 
-      <!-- 1. THE CURRICULUM OF THE RIVER -->
-      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
-        <div class="space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              Live Demo
-            </span>
-            <span class="text-[11px] text-slate-400">Math · Grades 6–8</span>
-          </div>
-          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
-            <a href="https://thecorcoran.github.io/MS-Math/" class="hover:text-amberwood transition">
-              The Curriculum of the River
-            </a>
-          </h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            A 3-year classical middle school mathematics curriculum built on 17" × 11" landscape broadsheets and Thomistic abstraction.
-          </p>
+    <!-- ACTIVE WORKS & PROJECTS SECTION -->
+    <section id="projects" class="projects-section">
+      
+      <!-- SECTION HEADER WITH CONTROLS -->
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Active Works & Projects</h2>
+          <p class="section-subtitle">Live web utilities, pedagogical frameworks, open repositories, and media series.</p>
         </div>
-        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
-          <a href="https://github.com/thecorcoran/MS-Math" target="_blank" class="text-slate-500 hover:text-river-900 underline">
-            GitHub Repo
-          </a>
-          <a href="https://thecorcoran.github.io/MS-Math/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
-            <span>Open Site</span>
-            <span>↗</span>
-          </a>
+        
+        <!-- SEARCH BOX -->
+        <div class="search-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="project-search" placeholder="Search by title, technology, or topic..." aria-label="Search projects">
+          <button id="clear-search" class="clear-search-btn hidden" aria-label="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
       </div>
 
-      <!-- 2. GABRIEL MARCEL READER -->
-      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
-        <div class="space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              Live Demo
-            </span>
-            <span class="text-[11px] text-slate-400">Philosophy Corpus</span>
-          </div>
-          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
-            <a href="https://thecorcoran.github.io/Marcel-Reader/" class="hover:text-amberwood transition">
-              The Gabriel Marcel Reader
-            </a>
-          </h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            An open multilingual digital corpus and bilingual reading environment for the philosophical and dramatic works of Gabriel Marcel.
-          </p>
-        </div>
-        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
-          <a href="https://github.com/thecorcoran/Marcel-Reader" target="_blank" class="text-slate-500 hover:text-river-900 underline">
-            GitHub Repo
-          </a>
-          <a href="https://thecorcoran.github.io/Marcel-Reader/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
-            <span>Open Reader</span>
-            <span>↗</span>
-          </a>
-        </div>
+      <!-- CATEGORY FILTER PILLS -->
+      <div class="filter-bar" role="tablist" aria-label="Project categories">
+        <button class="filter-pill active" data-category="all" role="tab" aria-selected="true">
+          All Works <span class="pill-count" id="count-all">8</span>
+        </button>
+        <button class="filter-pill" data-category="curriculum" role="tab" aria-selected="false">
+          Curriculum & Math <span class="pill-count">1</span>
+        </button>
+        <button class="filter-pill" data-category="readers" role="tab" aria-selected="false">
+          Reading & Philosophy <span class="pill-count">2</span>
+        </button>
+        <button class="filter-pill" data-category="tools" role="tab" aria-selected="false">
+          Web Tools & Utilities <span class="pill-count">3</span>
+        </button>
+        <button class="filter-pill" data-category="craft" role="tab" aria-selected="false">
+          Hardware & Craft <span class="pill-count">2</span>
+        </button>
       </div>
 
-      <!-- 3. ADVENTURE BOOKS -->
-      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
-        <div class="space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              Live App
+      <!-- PROJECT GRID -->
+      <div class="projects-grid" id="projects-grid">
+
+        <!-- 1. THE CURRICULUM OF THE RIVER -->
+        <article class="project-card" data-category="curriculum" data-keywords="curriculum river mathematics math middle school thomistic broadsheet grades 6 7 8 socratic geometry education latex">
+          <div class="card-header">
+            <span class="status-badge badge-live">
+              <i class="fa-solid fa-circle-check"></i> Live Site
             </span>
-            <span class="text-[11px] text-slate-400">Literature & Voyages</span>
+            <span class="category-tag">Classical Math · Grades 6–8</span>
           </div>
-          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
-            <a href="https://thecorcoran.github.io/adventure-books/" class="hover:text-amberwood transition">
-              Adventure Books
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://thecorcoran.github.io/MS-Math/" target="_blank" rel="noopener noreferrer">
+                The Curriculum of the River
+              </a>
+            </h3>
+            <p class="project-tagline">
+              A 3-year classical middle school mathematics curriculum built on 17" × 11" landscape broadsheets.
+            </p>
+            <p class="project-description">
+              Rooted in Thomistic abstraction and Socratic problem sequences, this curriculum replaces fragmented textbooks with comprehensive broadsheets synthesizing geometric intuition, arithmetic precision, and algebraic foundations.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">Broadsheet Imposition</span>
+              <span class="tag">Thomistic Pedagogy</span>
+              <span class="tag">Grades 6–8</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/thecorcoran/MS-Math" target="_blank" rel="noopener noreferrer" class="link-repo">
+              <i class="fa-brands fa-github"></i> GitHub Repo
             </a>
-          </h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            A curated digital reading environment and audio directory for classical maritime exploration, wilderness journals, and adventure narratives.
-          </p>
-        </div>
-        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
-          <a href="https://github.com/thecorcoran/adventure-books" target="_blank" class="text-slate-500 hover:text-river-900 underline">
-            GitHub Repo
-          </a>
-          <a href="https://thecorcoran.github.io/adventure-books/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
-            <span>Open Books</span>
-            <span>↗</span>
-          </a>
-        </div>
+            <a href="https://thecorcoran.github.io/MS-Math/" target="_blank" rel="noopener noreferrer" class="btn-action">
+              <span>Open Site</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 2. GABRIEL MARCEL READER -->
+        <article class="project-card" data-category="readers" data-keywords="gabriel marcel reader philosophy french phenomenology existentialism bilingual corpus drama christian personalism text">
+          <div class="card-header">
+            <span class="status-badge badge-live">
+              <i class="fa-solid fa-circle-check"></i> Live Reader
+            </span>
+            <span class="category-tag">Multilingual Corpus</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer">
+                The Gabriel Marcel Reader
+              </a>
+            </h3>
+            <p class="project-tagline">
+              An open digital corpus and bilingual reading environment for Gabriel Marcel's philosophy.
+            </p>
+            <p class="project-description">
+              A scholarly, responsive digital reading suite offering parallel French-English text viewing, critical annotations, and semantic search across the philosophical essays and dramatic plays of Christian existentialist Gabriel Marcel.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">Bilingual French/English</span>
+              <span class="tag">Phenomenology</span>
+              <span class="tag">Digital Corpus</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/thecorcoran/Marcel-Reader" target="_blank" rel="noopener noreferrer" class="link-repo">
+              <i class="fa-brands fa-github"></i> GitHub Repo
+            </a>
+            <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer" class="btn-action">
+              <span>Open Reader</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 3. ADVENTURE BOOKS -->
+        <article class="project-card" data-category="readers" data-keywords="adventure books maritime exploration wilderness journals voyage reading audio classics literature history library">
+          <div class="card-header">
+            <span class="status-badge badge-live">
+              <i class="fa-solid fa-circle-check"></i> Live App
+            </span>
+            <span class="category-tag">Expedition Literature</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://thecorcoran.github.io/adventure-books/" target="_blank" rel="noopener noreferrer">
+                Adventure Books
+              </a>
+            </h3>
+            <p class="project-tagline">
+              Curated digital reading environment and audio directory for classical exploration and wilderness accounts.
+            </p>
+            <p class="project-description">
+              A typography-forward digital reading sanctuary featuring primary source maritime voyages, polar expeditions, mountaineering journals, and wilderness survival narratives paired with public domain audio recordings.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">Maritime Journals</span>
+              <span class="tag">Audio Integration</span>
+              <span class="tag">Editorial Typography</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/thecorcoran/adventure-books" target="_blank" rel="noopener noreferrer" class="link-repo">
+              <i class="fa-brands fa-github"></i> GitHub Repo
+            </a>
+            <a href="https://thecorcoran.github.io/adventure-books/" target="_blank" rel="noopener noreferrer" class="btn-action">
+              <span>Open Books</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 4. MINI-BOOK MAKER -->
+        <article class="project-card" data-category="tools" data-keywords="mini book maker decodable phonics early literacy pocket book print 8-page imposition paper craft education">
+          <div class="card-header">
+            <span class="status-badge badge-live">
+              <i class="fa-solid fa-circle-check"></i> Live App
+            </span>
+            <span class="category-tag">Early Literacy Print Tool</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://thecorcoran.github.io/mini-book-maker/" target="_blank" rel="noopener noreferrer">
+                Mini-Book Maker
+              </a>
+            </h3>
+            <p class="project-tagline">
+              In-browser utility that formats 8-page foldable decodable pocket books from a single sheet of paper.
+            </p>
+            <p class="project-description">
+              Designed for homeschoolers and early literacy classrooms. Formats custom phonics texts, CVC word exercises, and illustrations onto a standard sheet with folding and cutting guides to produce a pocket booklet without staples.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">Single-Sheet Imposition</span>
+              <span class="tag">Phonics Reader</span>
+              <span class="tag">Client-Side PDF/Print</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/thecorcoran/mini-book-maker" target="_blank" rel="noopener noreferrer" class="link-repo">
+              <i class="fa-brands fa-github"></i> GitHub Repo
+            </a>
+            <a href="https://thecorcoran.github.io/mini-book-maker/" target="_blank" rel="noopener noreferrer" class="btn-action">
+              <span>Open App</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 5. WEEKLY SCHEDULE PLANNER (ONTHEFRIG) -->
+        <article class="project-card" data-category="tools" data-keywords="weekly schedule planner onthefrig fridge calendar routine time blocking homeschool chores domestic organizer print">
+          <div class="card-header">
+            <span class="status-badge badge-live">
+              <i class="fa-solid fa-circle-check"></i> Live App
+            </span>
+            <span class="category-tag">Homestead Rhythm & Flow</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://thecorcoran.github.io/OnTheFrig/" target="_blank" rel="noopener noreferrer">
+                Weekly Schedule Planner
+              </a>
+            </h3>
+            <p class="project-tagline">
+              Minimalist time-blocking and homeschool chore planner formatted for the refrigerator.
+            </p>
+            <p class="project-description">
+              A distraction-free household dashboard engineered to replace noisy cloud calendar apps. Allows rapid block-scheduling for lessons, chores, and homestead tasks, generating high-contrast printable landscape sheets.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">Landscape Print Layout</span>
+              <span class="tag">Local Storage Sync</span>
+              <span class="tag">Household Flow</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/thecorcoran/OnTheFrig" target="_blank" rel="noopener noreferrer" class="link-repo">
+              <i class="fa-brands fa-github"></i> GitHub Repo
+            </a>
+            <a href="https://thecorcoran.github.io/OnTheFrig/" target="_blank" rel="noopener noreferrer" class="btn-action">
+              <span>Open App</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 6. PROJECT MORADA -->
+        <article class="project-card" data-category="tools" data-keywords="project morada interior castle teresa of avila writing engine markdown scriptorium chambers contemplative scholar desk">
+          <div class="card-header">
+            <span class="status-badge badge-code">
+              <i class="fa-solid fa-terminal"></i> Writing Engine
+            </span>
+            <span class="category-tag">Contemplative Desk</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://github.com/thecorcoran/Project-Morada" target="_blank" rel="noopener noreferrer">
+                Project Morada
+              </a>
+            </h3>
+            <p class="project-tagline">
+              Contemplative writing environment modeled on Saint Teresa of Ávila’s <em>Interior Castle</em>.
+            </p>
+            <p class="project-description">
+              A distraction-free writing and reflection studio organizing manuscripts into nested Chambers, Mansions, and Scriptoriums. Backed by plain Markdown files on local disk without telemetry or subscription walls.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">Interior Castle Architecture</span>
+              <span class="tag">Local Markdown</span>
+              <span class="tag">Focus Writing</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="card-meta"><i class="fa-solid fa-feather-pointed"></i> Manuscript Desk</span>
+            <a href="https://github.com/thecorcoran/Project-Morada" target="_blank" rel="noopener noreferrer" class="btn-action">
+              <span>View Repository</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 7. BUILDING OUR WOODSHED (YOUTUBE SERIES) -->
+        <article class="project-card" data-category="craft" data-keywords="building our woodshed youtube video timber framing construction homestead woodworking dispatches mom craft shed">
+          <div class="card-header">
+            <span class="status-badge badge-video">
+              <i class="fa-solid fa-film"></i> Video Journal
+            </span>
+            <span class="category-tag">12 Episodes · Timber Craft</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" rel="noopener noreferrer">
+                Building Our Woodshed: Dispatches for Mom
+              </a>
+            </h3>
+            <p class="project-tagline">
+              A 12-part timber construction build journal of an 8' × 40' single-slope woodshed on the homestead.
+            </p>
+            <p class="project-description">
+              A video chronicle documenting traditional timber carpentry, foundation framing, rafter math, and homestead construction techniques, recorded as intimate weekly updates for the builder's mother.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">8' × 40' Timber Frame</span>
+              <span class="tag">Homestead Craft</span>
+              <span class="tag">12 Video Episodes</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="card-meta"><i class="fa-brands fa-youtube"></i> YouTube Playlist</span>
+            <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" rel="noopener noreferrer" class="btn-action btn-accent">
+              <span>Watch Series</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 8. ADAWRITER -->
+        <article class="project-card" data-category="craft" data-keywords="adawriter typewriter e-paper e-ink raspberry pi python evdev distraction-free hardware waveshare keyboard mechanical">
+          <div class="card-header">
+            <span class="status-badge badge-hardware">
+              <i class="fa-solid fa-microchip"></i> Hardware / Python
+            </span>
+            <span class="category-tag">E-Paper Typewriter</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" rel="noopener noreferrer">
+                AdaWriter (v1.4.3)
+              </a>
+            </h3>
+            <p class="project-tagline">
+              A distraction-free, appliance-style writing instrument powered by Raspberry Pi and 4.2" e-paper.
+            </p>
+            <p class="project-description">
+              Combines a physical mechanical keyboard with low-level Linux <code>evdev</code> input and high-contrast e-ink rendering. Features automatic daily journal roll-ups, Wi-Fi draft transfer, and an instant-on appliance experience.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">Waveshare 4.2" E-Paper</span>
+              <span class="tag">Raspberry Pi + Python</span>
+              <span class="tag">Distraction-Free</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="card-meta"><i class="fa-solid fa-microchip"></i> Firmware & Spec</span>
+            <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" rel="noopener noreferrer" class="btn-action">
+              <span>GitHub Repo</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
       </div>
 
-      <!-- 4. MINI-BOOK MAKER -->
-      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
-        <div class="space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              Live App
-            </span>
-            <span class="text-[11px] text-slate-400">Early Literacy</span>
-          </div>
-          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
-            <a href="https://thecorcoran.github.io/mini-book-maker/" class="hover:text-amberwood transition">
-              Mini-Book Maker
-            </a>
-          </h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            An in-browser print utility that formats 8-page foldable decodable pocket books from a single sheet of paper with cut/fold guides.
-          </p>
-        </div>
-        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
-          <a href="https://github.com/thecorcoran/mini-book-maker" target="_blank" class="text-slate-500 hover:text-river-900 underline">
-            GitHub Repo
-          </a>
-          <a href="https://thecorcoran.github.io/mini-book-maker/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
-            <span>Open App</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 5. WEEKLY SCHEDULE MAKER -->
-      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
-        <div class="space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              Live App
-            </span>
-            <span class="text-[11px] text-slate-400">OnTheFrig</span>
-          </div>
-          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
-            <a href="https://thecorcoran.github.io/OnTheFrig/" class="hover:text-amberwood transition">
-              Weekly Schedule Planner
-            </a>
-          </h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            A minimalist weekly time-blocking and homeschool chore planner designed to build routines and print clean landscape sheets for the fridge.
-          </p>
-        </div>
-        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
-          <a href="https://github.com/thecorcoran/OnTheFrig" target="_blank" class="text-slate-500 hover:text-river-900 underline">
-            GitHub Repo
-          </a>
-          <a href="https://thecorcoran.github.io/OnTheFrig/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
-            <span>Open App</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 6. PROJECT MORADA -->
-      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
-        <div class="space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-river-800 bg-river-50 px-2 py-0.5 rounded border border-river-800/10">
-              Writing Engine
-            </span>
-            <span class="text-[11px] text-slate-400">Interior Castle</span>
-          </div>
-          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
-            <a href="https://github.com/thecorcoran/Project-Morada" target="_blank" class="hover:text-amberwood transition">
-              Project Morada
-            </a>
-          </h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            A contemplative writing environment modeled on Saint Teresa of Ávila’s <em>Interior Castle</em>, organizing nested Chambers and Scriptoriums backed by local Markdown.
-          </p>
-        </div>
-        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
-          <span class="text-slate-400">Scholar's Desk · Canvas</span>
-          <a href="https://github.com/thecorcoran/Project-Morada" target="_blank" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
-            <span>GitHub Repo</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 7. BUILDING OUR WOODSHED (YOUTUBE SERIES) -->
-      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
-        <div class="space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-amberwood bg-amber-50 px-2 py-0.5 rounded border border-amberwood/10">
-              Video Build Journal
-            </span>
-            <span class="text-[11px] text-slate-400">12 Episodes</span>
-          </div>
-          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
-            <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" class="hover:text-amberwood transition">
-              Building Our Woodshed: Dispatches for Mom
-            </a>
-          </h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            A 12-part timber construction build journal of an 8' × 40' single-slope woodshed on the homestead, recorded as dispatches for my mother.
-          </p>
-        </div>
-        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
-          <span class="text-slate-400">YouTube Playlist</span>
-          <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" class="font-medium bg-amberwood hover:bg-amberwoodLight text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
-            <span>Watch Series</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 8. ADAWRITER -->
-      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
-        <div class="space-y-2.5">
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
-              Hardware / Python
-            </span>
-            <span class="text-[11px] text-slate-400">E-Paper Typewriter</span>
-          </div>
-          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
-            <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" class="hover:text-amberwood transition">
-              AdaWriter (v1.4.3)
-            </a>
-          </h2>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            A distraction-free, appliance-style writing device powered by a Raspberry Pi and 4.2" e-paper display with physical keyboard input and local Wi-Fi transfer.
-          </p>
-        </div>
-        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
-          <span class="text-slate-400">Raspberry Pi + E-Ink</span>
-          <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" class="font-medium bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
-            <span>GitHub Repo</span>
-            <span>↗</span>
-          </a>
-        </div>
+      <!-- EMPTY STATE FOR SEARCH -->
+      <div id="no-results" class="no-results-box hidden">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <h3>No matching works found</h3>
+        <p>Try searching for other terms like "Math", "Marcel", "Raspberry Pi", "Reading", or reset your filters.</p>
+        <button id="reset-filter-btn" class="btn btn-secondary">Reset Search & Filters</button>
       </div>
 
     </section>
 
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section">
+      <div class="about-card">
+        <div class="about-content">
+          <span class="about-eyebrow">Biographical Note</span>
+          <h2 class="about-title">About Jonathan M. Corcoran</h2>
+          <div class="about-text">
+            <p>
+              I am an educator, craftsman, and software builder living with my family on a homestead along the Chehalis Western Trail in Olympia, Washington.
+            </p>
+            <p>
+              My work unites classical mathematics pedagogy, tactile timber construction, distraction-free appliance computing, and Christian personalist philosophy. I hold degrees in <strong>Elementary Education (BA)</strong>, <strong>Mathematics Education (MEd)</strong>, and <strong>Philosophy (MA)</strong>, and teach middle school mathematics in Washington State.
+            </p>
+            <p>
+              All projects published here are open-source and freely accessible, designed with durable typography, quiet digital interfaces, and respect for the student, reader, and craftsman.
+            </p>
+          </div>
+
+          <div class="about-meta-grid">
+            <div class="meta-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>Location</strong>
+                <span>Olympia, Washington (PNW)</span>
+              </div>
+            </div>
+            <div class="meta-item">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <div>
+                <strong>Focus</strong>
+                <span>Math Pedagogy & Philosophy</span>
+              </div>
+            </div>
+            <div class="meta-item">
+              <i class="fa-solid fa-hammer"></i>
+              <div>
+                <strong>Craft</strong>
+                <span>Timber Framing & E-Ink Hardware</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & FEEDBACK SECTION -->
+    <section id="contact" class="contact-section">
+      <div class="contact-card">
+        <div class="contact-intro">
+          <span class="about-eyebrow">Direct Contact & Feedback</span>
+          <h2 class="section-title">Send a Dispatch or Comment</h2>
+          <p class="contact-desc">
+            Have thoughts, bug reports, curriculum inquiries, or reflections on any of the works? You can reach me directly below or email me at <a href="mailto:thecorcoran@gmail.com" class="inline-email">thecorcoran@gmail.com</a>.
+          </p>
+        </div>
+
+        <form id="feedback-form" class="feedback-form" action="https://formspree.io/f/mqadvwvo" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name <span class="label-opt">(Optional)</span></label>
+              <input type="text" id="name" name="name" placeholder="e.g. Thomas Merton" autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="label-opt">(Optional, if you'd like a reply)</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="project-select">Subject / Project Reference <span class="label-opt">(Optional)</span></label>
+            <select id="project-select" name="project" class="form-select">
+              <option value="General Inquiry / Hello">General Inquiry / Personal Note</option>
+              <option value="The Curriculum of the River">The Curriculum of the River (MS Math)</option>
+              <option value="The Gabriel Marcel Reader">The Gabriel Marcel Reader</option>
+              <option value="Adventure Books">Adventure Books</option>
+              <option value="Mini-Book Maker">Mini-Book Maker</option>
+              <option value="Weekly Schedule Planner (OnTheFrig)">Weekly Schedule Planner (OnTheFrig)</option>
+              <option value="Project Morada">Project Morada</option>
+              <option value="Building Our Woodshed Series">Building Our Woodshed (Video Series)</option>
+              <option value="AdaWriter E-Paper">AdaWriter (E-Paper Hardware)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message or Feedback <span class="label-req">*</span></label>
+            <textarea id="message" name="message" rows="5" placeholder="Share questions, curriculum feedback, thoughts, or ideas..." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="submit-btn" class="btn btn-primary">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Send Message</span>
+            </button>
+            <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
   </main>
 
-  <!-- MINIMAL FOOTER -->
-  <footer class="border-t border-borderParchment py-5 px-6 bg-white/60 text-center text-xs text-slate-500">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-      <span>Jonathan M. Corcoran · Olympia, Washington</span>
-      <div class="flex items-center space-x-4">
-        <button onclick="toggleAboutModal()" class="hover:text-river-900 underline">About Me</button>
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-brand">Jonathan M. Corcoran</p>
+        <p class="footer-geo">Olympia, Washington · Homestead Built & Maintained</p>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Back to Top ↑</a>
         <span>·</span>
-        <a href="mailto:thecorcoran@gmail.com" class="hover:text-river-900 underline">thecorcoran@gmail.com</a>
+        <a href="https://thecorcoran.github.io/MS-Math/" target="_blank" rel="noopener noreferrer">The Curriculum of the River</a>
+        <span>·</span>
+        <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer">Gabriel Marcel Reader</a>
+        <span>·</span>
+        <a href="https://github.com/thecorcoran" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span>·</span>
+        <a href="mailto:thecorcoran@gmail.com">thecorcoran@gmail.com</a>
       </div>
     </div>
   </footer>
 
-  <!-- ABOUT ME MODAL DIALOG -->
-  <div id="about-modal" class="fixed inset-0 z-50 bg-river-900/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl border border-borderParchment max-w-md w-full p-6 sm:p-7 space-y-4 shadow-2xl relative" onclick="event.stopPropagation()">
-      <div class="flex items-start justify-between border-b border-borderParchment pb-3">
-        <h3 class="font-cormorant text-2xl font-bold text-river-900">About Jonathan M. Corcoran</h3>
-        <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-river-900 text-2xl leading-none px-1">&times;</button>
-      </div>
-      <div class="space-y-3 text-sm text-slate-700 leading-relaxed">
-        <p>
-          I am an educator, craftsman, and independent builder based on a homestead in Olympia, Washington.
-        </p>
-        <p>
-          My work centers on classical mathematics curriculum, open early literacy tools, traditional timber craft, and personalist philosophy.
-        </p>
-        <p>
-          You can reach me directly at:
-        </p>
-        <div>
-          <a href="mailto:thecorcoran@gmail.com" class="font-semibold text-river-900 hover:text-amberwood underline">
-            thecorcoran@gmail.com
-          </a>
-        </div>
-      </div>
-      <div class="pt-2 border-t border-borderParchment flex justify-end">
-        <button onclick="toggleAboutModal()" class="text-xs uppercase tracking-wider bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-1.5 rounded-full font-medium transition">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-
+  <!-- JAVASCRIPT: FILTERING, SEARCH, THEME TOGGLE, FORM SUBMISSION -->
   <script>
-    function toggleAboutModal() {
-      const modal = document.getElementById('about-modal');
-      modal.classList.toggle('hidden');
-    }
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.getElementById('about-modal').classList.add('hidden');
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- 1. THEME SWITCHER WITH LOCALSTORAGE & SYSTEM PREFERENCE ---
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = themeToggle.querySelector('i');
+      const themeLabel = themeToggle.querySelector('.theme-label');
+
+      function getPreferredTheme() {
+        const saved = localStorage.getItem('site-theme');
+        if (saved) return saved;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
-    });
-    document.getElementById('about-modal').addEventListener('click', () => {
-      document.getElementById('about-modal').classList.add('hidden');
+
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          document.body.classList.add('dark-mode');
+          document.body.classList.remove('theme-parchment');
+          themeIcon.className = 'fa-solid fa-sun';
+          themeLabel.textContent = 'Light';
+        } else {
+          document.body.classList.remove('dark-mode');
+          document.body.classList.add('theme-parchment');
+          themeIcon.className = 'fa-solid fa-moon';
+          themeLabel.textContent = 'Dark';
+        }
+        localStorage.setItem('site-theme', theme);
+      }
+
+      applyTheme(getPreferredTheme());
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+
+      // --- 2. FILTERING & SEARCH ENGINE ---
+      const filterPills = document.querySelectorAll('.filter-pill');
+      const searchInput = document.getElementById('project-search');
+      const clearSearchBtn = document.getElementById('clear-search');
+      const projectCards = document.querySelectorAll('.project-card');
+      const noResultsBox = document.getElementById('no-results');
+      const resetFilterBtn = document.getElementById('reset-filter-btn');
+
+      let currentCategory = 'all';
+      let searchQuery = '';
+
+      function filterProjects() {
+        let visibleCount = 0;
+        const query = searchQuery.trim().toLowerCase();
+
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+          const cardText = card.innerText.toLowerCase();
+
+          const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+          const matchesSearch = !query || keywords.includes(query) || cardText.includes(query);
+
+          if (matchesCategory && matchesSearch) {
+            card.classList.remove('hidden-card');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden-card');
+          }
+        });
+
+        if (visibleCount === 0) {
+          noResultsBox.classList.remove('hidden');
+        } else {
+          noResultsBox.classList.add('hidden');
+        }
+
+        // Toggle clear search button
+        if (query.length > 0) {
+          clearSearchBtn.classList.remove('hidden');
+        } else {
+          clearSearchBtn.classList.add('hidden');
+        }
+      }
+
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => {
+            p.classList.remove('active');
+            p.setAttribute('aria-selected', 'false');
+          });
+          pill.classList.add('active');
+          pill.setAttribute('aria-selected', 'true');
+          currentCategory = pill.getAttribute('data-category');
+          filterProjects();
+        });
+      });
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        filterProjects();
+      });
+
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        searchInput.focus();
+        filterProjects();
+      });
+
+      resetFilterBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        currentCategory = 'all';
+        filterPills.forEach(p => {
+          p.classList.toggle('active', p.getAttribute('data-category') === 'all');
+          p.setAttribute('aria-selected', p.getAttribute('data-category') === 'all');
+        });
+        filterProjects();
+      });
+
+      // --- 3. FORMSPREE ASYNC SUBMISSION ---
+      const feedbackForm = document.getElementById('feedback-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const formStatus = document.getElementById('form-status');
+
+      feedbackForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        const originalBtnHtml = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Sending...</span>';
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            formStatus.textContent = '✓ Thank you! Your message has been sent directly to Jonathan.';
+            formStatus.className = 'form-status status-success';
+            form.reset();
+          } else {
+            const errData = await response.json();
+            if (errData && errData.errors) {
+              formStatus.textContent = 'Notice: ' + errData.errors.map(err => err.message).join(', ');
+            } else {
+              formStatus.textContent = 'Oops! There was a problem submitting your message. Please email thecorcoran@gmail.com directly.';
+            }
+            formStatus.className = 'form-status status-error';
+          }
+        } catch (err) {
+          formStatus.textContent = 'Network error. Please email thecorcoran@gmail.com directly.';
+          formStatus.className = 'form-status status-error';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }
+      });
     });
   </script>
 
