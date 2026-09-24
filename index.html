@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonathan M. Corcoran · Writings, Curriculum & Digital Works</title>
-  <meta name="description" content="Projects, open curriculum architecture, digital scholarship, and hardware tools by Jonathan M. Corcoran.">
+  <title>Jonathan M. Corcoran · Projects & Tools</title>
+  <meta name="description" content="Projects, open curriculum frameworks, digital readers, and workshop journals by Jonathan M. Corcoran.">
   
-  <!-- Typography & Classical Serif Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,25 +18,21 @@
       theme: {
         extend: {
           colors: {
-            parchment: '#fcfbf7',
-            cream: '#f6f4ea',
+            parchment: '#faf9f5',
+            cream: '#f4f2e9',
             river: {
               900: '#14233c',
-              800: '#1b3254',
-              700: '#254778',
-              600: '#325e9e',
-              100: '#eef5fc',
-              50: '#f4f8fc'
+              800: '#1d3356',
+              700: '#274777',
+              50: '#f0f5fb'
             },
             amberwood: '#9c4221',
             amberwoodLight: '#c05621',
-            borderParchment: '#e7e3d4'
+            borderParchment: '#e5e1d3'
           },
           fontFamily: {
             cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            cardo: ['"Cardo"', 'Georgia', 'serif'],
-            serif: ['"Newsreader"', 'Georgia', 'serif'],
-            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif']
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
           }
         }
       }
@@ -45,342 +41,341 @@
   
   <style>
     body {
-      background-color: #fcfbf7;
+      background-color: #faf9f5;
       color: #1e2530;
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
-    .plate-shadow {
-      box-shadow: 0 4px 20px -2px rgba(20, 35, 60, 0.05), 0 2px 6px -1px rgba(20, 35, 60, 0.03);
+    .card-hover {
+      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .hover-lift {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .hover-lift:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px -4px rgba(20, 35, 60, 0.09), 0 4px 10px -2px rgba(20, 35, 60, 0.05);
+    .card-hover:hover {
+      border-color: #14233c;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -4px rgba(20, 35, 60, 0.08);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col font-serif antialiased selection:bg-river-900 selection:text-white">
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-river-900 selection:text-white">
 
-  <!-- TOP HEADER -->
-  <header class="border-b border-borderParchment bg-white/70 backdrop-blur-md sticky top-0 z-30">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <span class="w-2.5 h-2.5 rounded-full bg-amberwood"></span>
-        <a href="#top" class="font-cormorant font-bold text-xl sm:text-2xl text-river-900 tracking-tight hover:text-amberwood transition">
-          Jonathan M. Corcoran
+  <!-- MINIMAL HEADER -->
+  <header class="border-b border-borderParchment bg-white/80 backdrop-blur-sm sticky top-0 z-20">
+    <div class="max-w-5xl mx-auto px-6 py-3.5 flex items-center justify-between">
+      <a href="#top" class="font-cormorant font-bold text-2xl text-river-900 tracking-tight hover:text-amberwood transition">
+        Jonathan M. Corcoran
+      </a>
+      <div class="flex items-center space-x-5 text-xs font-medium uppercase tracking-wider">
+        <button onclick="toggleAboutModal()" class="text-slate-600 hover:text-river-900 underline transition">
+          About Me
+        </button>
+        <a href="https://github.com/thecorcoran" target="_blank" class="text-slate-600 hover:text-river-900 transition">
+          GitHub ↗
         </a>
       </div>
-      <nav class="flex items-center space-x-6 text-xs font-sans uppercase tracking-wider text-slate-600 font-medium">
-        <a href="#live-works" class="hover:text-river-900 transition">Live Works</a>
-        <a href="#projects" class="hover:text-river-900 transition">Repositories</a>
-        <a href="#about" class="hover:text-river-900 transition">About</a>
-        <a href="mailto:thecorcoran@gmail.com" class="text-amberwood hover:text-amberwoodLight transition">Contact</a>
-      </nav>
     </div>
   </header>
 
-  <!-- MAIN CONTAINER -->
-  <main class="flex-1 max-w-5xl mx-auto px-6 py-12 sm:py-16 w-full space-y-16" id="top">
+  <!-- MAIN CONTAINER (COMPACT, MINIMAL SCROLL) -->
+  <main class="flex-1 max-w-5xl mx-auto px-6 py-8 w-full space-y-6" id="top">
 
-    <!-- BIOGRAPHICAL INTRO -->
-    <section class="space-y-4 max-w-3xl">
-      <span class="text-xs font-sans uppercase tracking-widest text-slate-500 font-semibold">
-        Curriculum · Philosophy · Open Hardware · Literary Craft
-      </span>
-      <h1 class="font-cormorant text-4xl sm:text-5xl font-bold text-river-900 leading-[1.15]">
-        Studies in Classical Pedagogy, Phenomenological Realism & Dedicated Tools
+    <!-- BRIEF SECTION HEADING -->
+    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-borderParchment pb-3">
+      <h1 class="font-cormorant text-3xl font-bold text-river-900">
+        Active Works & Projects
       </h1>
-      <p class="text-lg text-slate-700 leading-relaxed font-normal pt-1">
-        An index of open educational platforms, philosophical corpora, and focused writing systems curated and built by Jonathan M. Corcoran in Olympia, Washington.
-      </p>
-    </section>
+      <span class="text-xs text-slate-500 uppercase tracking-wider">
+        Live Sites · Applications · Build Journals
+      </span>
+    </div>
 
-    <!-- HORIZONTAL RULE -->
-    <div class="border-t border-borderParchment"></div>
+    <!-- 8-CARD COMPACT GRID -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-    <!-- SECTION 1: LIVE INTERACTIVE WEB ENVIRONMENTS -->
-    <section id="live-works" class="space-y-8">
-      <div class="flex items-baseline justify-between border-b border-borderParchment pb-3">
-        <div>
-          <span class="text-xs font-sans uppercase tracking-wider text-river-700 font-semibold">Flagship Environments</span>
-          <h2 class="font-cormorant text-2xl sm:text-3xl font-bold text-river-900">
-            Published Digital Platforms
+      <!-- 1. THE CURRICULUM OF THE RIVER -->
+      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              Live Demo
+            </span>
+            <span class="text-[11px] text-slate-400">Math · Grades 6–8</span>
+          </div>
+          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
+            <a href="https://thecorcoran.github.io/MS-Math/" class="hover:text-amberwood transition">
+              The Curriculum of the River
+            </a>
           </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            A 3-year classical middle school mathematics curriculum built on 17" × 11" landscape broadsheets and Thomistic abstraction.
+          </p>
         </div>
-        <span class="text-xs font-sans uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-          Live on GitHub Pages
-        </span>
+        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
+          <a href="https://github.com/thecorcoran/MS-Math" target="_blank" class="text-slate-500 hover:text-river-900 underline">
+            GitHub Repo
+          </a>
+          <a href="https://thecorcoran.github.io/MS-Math/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
+            <span>Open Site</span>
+            <span>↗</span>
+          </a>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 gap-8">
-        
-        <!-- LIVE PROJECT 1: THE CURRICULUM OF THE RIVER -->
-        <article class="bg-white rounded-2xl border border-borderParchment plate-shadow hover-lift overflow-hidden flex flex-col justify-between">
-          <div class="p-8 sm:p-10 space-y-5">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-sans uppercase tracking-widest font-bold px-3 py-1 rounded-full bg-river-50 text-river-800 border border-river-800/10">
-                Mathematics Pedagogy · Grades 6–8
-              </span>
-              <span class="text-xs font-sans text-slate-400">17" × 11" Broadsheet Folios</span>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="font-cormorant text-2xl sm:text-3xl font-bold text-river-900">
-                <a href="https://thecorcoran.github.io/MS-Math/" class="hover:text-amberwood transition">
-                  The Curriculum of the River
-                </a>
-              </h3>
-              <p class="font-cormorant italic text-lg text-river-700 leading-snug">
-                A 3-year classical middle school mathematics curriculum grounded in Thomistic realism, physical craft, and historical metrology.
-              </p>
-            </div>
-
-            <p class="text-base text-slate-700 leading-relaxed">
-              Replaces fragmented digital exercise sets with rigorous daily landscape broadsheets. Rooted in St. Thomas Aquinas’s epistemic realism (<em>conversio ad phantasmata</em>), every plate moves through four disciplined stages: the <strong>Sensory Referent</strong> (physical workshop encounter), the <strong>Disciplinary Name</strong> (authentic academic vocabulary), the <strong>Affixing Bridge</strong> (operational reversibility), and the <strong>Abstract Invariant</strong> (universal immutable theorem).
-            </p>
-
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="text-xs font-sans bg-slate-50 text-slate-600 px-3 py-1 rounded border border-slate-200">Grades 6, 7 & 8 Decad Samples</span>
-              <span class="text-xs font-sans bg-slate-50 text-slate-600 px-3 py-1 rounded border border-slate-200">Foundational Charter</span>
-              <span class="text-xs font-sans bg-slate-50 text-slate-600 px-3 py-1 rounded border border-slate-200">300-Day Master Archive</span>
-            </div>
+      <!-- 2. GABRIEL MARCEL READER -->
+      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              Live Demo
+            </span>
+            <span class="text-[11px] text-slate-400">Philosophy Corpus</span>
           </div>
-
-          <div class="px-8 sm:px-10 py-4 bg-cream/40 border-t border-borderParchment flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <span class="font-sans text-xs text-slate-500 font-medium">Repository: <code>thecorcoran/MS-Math</code></span>
-            <div class="flex items-center gap-3">
-              <a href="https://github.com/thecorcoran/MS-Math" target="_blank" class="font-sans text-xs text-slate-600 hover:text-river-900 underline">View Code</a>
-              <a href="https://thecorcoran.github.io/MS-Math/" class="inline-flex items-center space-x-2 font-sans text-xs uppercase tracking-wider font-semibold bg-river-900 hover:bg-river-800 text-white px-5 py-2 rounded-full transition shadow-sm">
-                <span>Explore Curriculum</span>
-                <span>&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- LIVE PROJECT 2: GABRIEL MARCEL DIGITAL CORPUS -->
-        <article class="bg-white rounded-2xl border border-borderParchment plate-shadow hover-lift overflow-hidden flex flex-col justify-between">
-          <div class="p-8 sm:p-10 space-y-5">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="text-xs font-sans uppercase tracking-widest font-bold px-3 py-1 rounded-full bg-amber-50 text-amberwood border border-amberwood/10">
-                Christian Existentialism · Philosophical Corpus
-              </span>
-              <span class="text-xs font-sans text-slate-400">Digital Research Reader</span>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="font-cormorant text-2xl sm:text-3xl font-bold text-river-900">
-                <a href="https://thecorcoran.github.io/Marcel-Reader/" class="hover:text-amberwood transition">
-                  The Gabriel Marcel Reader
-                </a>
-              </h3>
-              <p class="font-cormorant italic text-lg text-river-700 leading-snug">
-                An open multilingual reading environment for the philosophy and dramatic works of Gabriel Marcel.
-              </p>
-            </div>
-
-            <p class="text-base text-slate-700 leading-relaxed">
-              A curated digital reader and research repository dedicated to the French personalist philosopher Gabriel Marcel. Features structured navigation, parallel language alignment, thematic indices, and textual apparatus designed for deep engagement with core Marcelian insights: <em>creative fidelity</em>, <em>intersubjectivity</em>, <em>the mystery of being</em>, and the critical distinction between primary and secondary reflection.
-            </p>
-
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="text-xs font-sans bg-slate-50 text-slate-600 px-3 py-1 rounded border border-slate-200">Open Multilingual Text Engine</span>
-              <span class="text-xs font-sans bg-slate-50 text-slate-600 px-3 py-1 rounded border border-slate-200">Personalist Thought</span>
-              <span class="text-xs font-sans bg-slate-50 text-slate-600 px-3 py-1 rounded border border-slate-200">Phenomenology</span>
-            </div>
-          </div>
-
-          <div class="px-8 sm:px-10 py-4 bg-cream/40 border-t border-borderParchment flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <span class="font-sans text-xs text-slate-500 font-medium">Repository: <code>thecorcoran/Marcel-Reader</code></span>
-            <div class="flex items-center gap-3">
-              <a href="https://github.com/thecorcoran/Marcel-Reader" target="_blank" class="font-sans text-xs text-slate-600 hover:text-river-900 underline">View Code</a>
-              <a href="https://thecorcoran.github.io/Marcel-Reader/" class="inline-flex items-center space-x-2 font-sans text-xs uppercase tracking-wider font-semibold bg-river-900 hover:bg-river-800 text-white px-5 py-2 rounded-full transition shadow-sm">
-                <span>Open Marcel Reader</span>
-                <span>&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- SECTION 2: PROJECT REPOSITORIES & DEVELOPING WORKS -->
-    <section id="projects" class="space-y-8">
-      <div class="border-b border-borderParchment pb-3">
-        <span class="text-xs font-sans uppercase tracking-wider text-slate-500 font-semibold">Project Repositories</span>
-        <h2 class="font-cormorant text-2xl sm:text-3xl font-bold text-river-900">
-          Tools, Pedagogical Generators & Dedicated Systems
-        </h2>
+          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
+            <a href="https://thecorcoran.github.io/Marcel-Reader/" class="hover:text-amberwood transition">
+              The Gabriel Marcel Reader
+            </a>
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            An open multilingual digital corpus and bilingual reading environment for the philosophical and dramatic works of Gabriel Marcel.
+          </p>
+        </div>
+        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
+          <a href="https://github.com/thecorcoran/Marcel-Reader" target="_blank" class="text-slate-500 hover:text-river-900 underline">
+            GitHub Repo
+          </a>
+          <a href="https://thecorcoran.github.io/Marcel-Reader/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
+            <span>Open Reader</span>
+            <span>↗</span>
+          </a>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 3. ADVENTURE BOOKS -->
+      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              Live App
+            </span>
+            <span class="text-[11px] text-slate-400">Literature & Voyages</span>
+          </div>
+          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
+            <a href="https://thecorcoran.github.io/adventure-books/" class="hover:text-amberwood transition">
+              Adventure Books
+            </a>
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            A curated digital reading environment and audio directory for classical maritime exploration, wilderness journals, and adventure narratives.
+          </p>
+        </div>
+        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
+          <a href="https://github.com/thecorcoran/adventure-books" target="_blank" class="text-slate-500 hover:text-river-900 underline">
+            GitHub Repo
+          </a>
+          <a href="https://thecorcoran.github.io/adventure-books/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
+            <span>Open Books</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
 
-        <!-- PROJECT 3: MINI-BOOK MAKER -->
-        <article class="bg-white rounded-xl border border-borderParchment plate-shadow hover-lift p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-sans uppercase tracking-wider font-semibold text-river-800 bg-river-50 px-2.5 py-0.5 rounded border border-river-800/10">
-                Early Literacy · Print Engine
-              </span>
-              <span class="text-xs font-sans text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                Interactive Tool
-              </span>
-            </div>
-
-            <h3 class="font-cormorant text-xl font-bold text-river-900 leading-tight">
+      <!-- 4. MINI-BOOK MAKER -->
+      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              Live App
+            </span>
+            <span class="text-[11px] text-slate-400">Early Literacy</span>
+          </div>
+          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
+            <a href="https://thecorcoran.github.io/mini-book-maker/" class="hover:text-amberwood transition">
               Mini-Book Maker
-            </h3>
-            <p class="font-cormorant italic text-sm text-slate-600">
-              One-sheet 8-page decodable booklet generator and template library.
-            </p>
+            </a>
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            An in-browser print utility that formats 8-page foldable decodable pocket books from a single sheet of paper with cut/fold guides.
+          </p>
+        </div>
+        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
+          <a href="https://github.com/thecorcoran/mini-book-maker" target="_blank" class="text-slate-500 hover:text-river-900 underline">
+            GitHub Repo
+          </a>
+          <a href="https://thecorcoran.github.io/mini-book-maker/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
+            <span>Open App</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
 
-            <p class="text-sm text-slate-700 leading-relaxed">
-              A web-based imposition and print utility that generates 8-page foldable pocket readers from a single sheet of standard US Letter paper. Features a curated library of 68 phonics-aligned titles across CVC word families, consonant blends, and fine-motor observational drawing prompts, alongside a custom browser editor.
-            </p>
+      <!-- 5. WEEKLY SCHEDULE MAKER -->
+      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              Live App
+            </span>
+            <span class="text-[11px] text-slate-400">OnTheFrig</span>
           </div>
+          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
+            <a href="https://thecorcoran.github.io/OnTheFrig/" class="hover:text-amberwood transition">
+              Weekly Schedule Planner
+            </a>
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            A minimalist weekly time-blocking and homeschool chore planner designed to build routines and print clean landscape sheets for the fridge.
+          </p>
+        </div>
+        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
+          <a href="https://github.com/thecorcoran/OnTheFrig" target="_blank" class="text-slate-500 hover:text-river-900 underline">
+            GitHub Repo
+          </a>
+          <a href="https://thecorcoran.github.io/OnTheFrig/" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
+            <span>Open App</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
 
-          <div class="pt-2 border-t border-borderParchment flex items-center justify-between text-xs font-sans">
-            <span class="text-slate-500">Imposition Grid & Editor</span>
-            <span class="text-slate-600 italic">Repository Archive</span>
+      <!-- 6. PROJECT MORADA -->
+      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-river-800 bg-river-50 px-2 py-0.5 rounded border border-river-800/10">
+              Writing Engine
+            </span>
+            <span class="text-[11px] text-slate-400">Interior Castle</span>
           </div>
-        </article>
+          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
+            <a href="https://github.com/thecorcoran/Project-Morada" target="_blank" class="hover:text-amberwood transition">
+              Project Morada
+            </a>
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            A contemplative writing environment modeled on Saint Teresa of Ávila’s <em>Interior Castle</em>, organizing nested Chambers and Scriptoriums backed by local Markdown.
+          </p>
+        </div>
+        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
+          <span class="text-slate-400">Scholar's Desk · Canvas</span>
+          <a href="https://github.com/thecorcoran/Project-Morada" target="_blank" class="font-medium bg-river-900 hover:bg-river-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
+            <span>GitHub Repo</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
 
-        <!-- PROJECT 4: ADAWRITER -->
-        <article class="bg-white rounded-xl border border-borderParchment plate-shadow hover-lift p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-sans uppercase tracking-wider font-semibold text-amberwood bg-amber-50 px-2.5 py-0.5 rounded border border-amberwood/10">
-                Distraction-Free Hardware
-              </span>
-              <span class="text-xs font-sans text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
-                Python / Raspberry Pi
-              </span>
-            </div>
+      <!-- 7. BUILDING OUR WOODSHED (YOUTUBE SERIES) -->
+      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-amberwood bg-amber-50 px-2 py-0.5 rounded border border-amberwood/10">
+              Video Build Journal
+            </span>
+            <span class="text-[11px] text-slate-400">12 Episodes</span>
+          </div>
+          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
+            <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" class="hover:text-amberwood transition">
+              Building Our Woodshed: Dispatches for Mom
+            </a>
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            A 12-part timber construction build journal of an 8' × 40' single-slope woodshed on the homestead, recorded as dispatches for my mother.
+          </p>
+        </div>
+        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
+          <span class="text-slate-400">YouTube Playlist</span>
+          <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" class="font-medium bg-amberwood hover:bg-amberwoodLight text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
+            <span>Watch Series</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
 
-            <h3 class="font-cormorant text-xl font-bold text-river-900 leading-tight">
+      <!-- 8. ADAWRITER -->
+      <div class="bg-white rounded-xl border border-borderParchment p-5 flex flex-col justify-between card-hover">
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+              Hardware / Python
+            </span>
+            <span class="text-[11px] text-slate-400">E-Paper Typewriter</span>
+          </div>
+          <h2 class="font-cormorant text-2xl font-bold text-river-900 leading-snug">
+            <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" class="hover:text-amberwood transition">
               AdaWriter (v1.4.3)
-            </h3>
-            <p class="font-cormorant italic text-sm text-slate-600">
-              Dedicated E-Ink writing instrument with direct physical keyboard interface.
-            </p>
-
-            <p class="text-sm text-slate-700 leading-relaxed">
-              An open-source, appliance-style distraction-free typewriter powered by a Raspberry Pi and a Waveshare 4.2" e-paper display. Uses direct low-level <code>evdev</code> keyboard handling, auto-saving daily journals, monthly log consolidation, local Wi-Fi document transfer, and a peaceful Tolstoy shutdown screen.
-            </p>
-          </div>
-
-          <div class="pt-2 border-t border-borderParchment flex items-center justify-between text-xs font-sans">
-            <span class="text-slate-500">Raspberry Pi + Waveshare E-Paper</span>
-            <span class="text-slate-600 italic">Firmware & Hardware Spec</span>
-          </div>
-        </article>
-
-        <!-- PROJECT 5: WEEKLY RHYTHM & SCHEDULE PLANNER -->
-        <article class="bg-white rounded-xl border border-borderParchment plate-shadow hover-lift p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-sans uppercase tracking-wider font-semibold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">
-                Homestead Logistics
-              </span>
-              <span class="text-xs font-sans text-slate-500">
-                Web Application
-              </span>
-            </div>
-
-            <h3 class="font-cormorant text-xl font-bold text-river-900 leading-tight">
-              Weekly Rhythm & Schedule Engine
-            </h3>
-            <p class="font-cormorant italic text-sm text-slate-600">
-              Structured time-blocking and seasonal homestead pacing dashboard.
-            </p>
-
-            <p class="text-sm text-slate-700 leading-relaxed">
-              A minimalist, printable weekly scheduling tool configured for family coordination, homestead tasks, and curriculum pacing. Replaces complex cloud calendars with clean typographical sheets designed to be printed or displayed in physical domestic spaces.
-            </p>
-          </div>
-
-          <div class="pt-2 border-t border-borderParchment flex items-center justify-between text-xs font-sans">
-            <span class="text-slate-500">Time-Blocking & Household Flow</span>
-            <span class="text-slate-600 italic">Web Utility</span>
-          </div>
-        </article>
-
-        <!-- PROJECT 6: LITERARY WORKS & ESSAYS -->
-        <article class="bg-white rounded-xl border border-borderParchment plate-shadow hover-lift p-6 flex flex-col justify-between space-y-4">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-sans uppercase tracking-wider font-semibold text-river-700 bg-river-50 px-2.5 py-0.5 rounded border border-river-700/10">
-                Short Fiction & Essays
-              </span>
-              <span class="text-xs font-sans text-slate-500">
-                Manuscript Corpus
-              </span>
-            </div>
-
-            <h3 class="font-cormorant text-xl font-bold text-river-900 leading-tight">
-              Essays, Short Fiction & Monographs
-            </h3>
-            <p class="font-cormorant italic text-sm text-slate-600">
-              Studies in narrative craft, classical geometry, and regional memory.
-            </p>
-
-            <p class="text-sm text-slate-700 leading-relaxed">
-              Stories and philosophical reflections set across the Pacific Northwest and the Nisqually marshlands. Explores themes of grief, craft, tactile labor, and Christian personalism influenced by the narrative techniques of Caroline Gordon, Henry James, and Flannery O'Connor.
-            </p>
-          </div>
-
-          <div class="pt-2 border-t border-borderParchment flex items-center justify-between text-xs font-sans">
-            <span class="text-slate-500">Literary Technique & Philosophy</span>
-            <span class="text-slate-600 italic">Manuscripts</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- SECTION 3: ABOUT / INQUIRIES -->
-    <section id="about" class="bg-cream/40 rounded-2xl border border-borderParchment p-8 sm:p-10 space-y-4">
-      <h3 class="font-cormorant text-2xl font-bold text-river-900">
-        About Jonathan M. Corcoran
-      </h3>
-      <div class="space-y-3 text-slate-700 leading-relaxed text-base">
-        <p>
-          Jonathan M. Corcoran works at the crossroads of classical mathematics, open-source educational tools, traditional woodworking, and phenomenological philosophy. He holds degrees in Elementary Education (BA), Mathematics Education (MEd), and Philosophy (MA), and teaches middle school mathematics in Washington State.
-        </p>
-        <p>
-          He resides with his family on a homestead property bordering the Chehalis Western Trail in Olympia, Washington.
-        </p>
-        <p>
-          For inquiries regarding curriculum source packages, pedagogical consulting, or collaborative research:
-        </p>
+            </a>
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            A distraction-free, appliance-style writing device powered by a Raspberry Pi and 4.2" e-paper display with physical keyboard input and local Wi-Fi transfer.
+          </p>
+        </div>
+        <div class="pt-4 mt-3 border-t border-borderParchment/80 flex items-center justify-between text-xs">
+          <span class="text-slate-400">Raspberry Pi + E-Ink</span>
+          <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" class="font-medium bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-1.5 rounded-full transition shadow-sm inline-flex items-center space-x-1">
+            <span>GitHub Repo</span>
+            <span>↗</span>
+          </a>
+        </div>
       </div>
 
-      <div class="pt-2">
-        <a href="mailto:thecorcoran@gmail.com" class="inline-flex items-center space-x-2 font-sans text-xs uppercase tracking-wider font-semibold text-river-900 hover:text-amberwood border-b border-river-900 hover:border-amberwood pb-0.5 transition">
-          <span>thecorcoran@gmail.com</span>
-          <span>&rarr;</span>
-        </a>
-      </div>
     </section>
 
   </main>
 
-  <!-- SITE FOOTER -->
-  <footer class="border-t border-borderParchment py-8 px-6 bg-white/50 text-center font-sans text-xs text-slate-500">
-    <div class="max-w-5xl mx-auto space-y-2">
-      <p>&copy; 2026 Jonathan M. Corcoran · Olympia, Washington</p>
-      <p class="space-x-4 text-slate-400">
-        <a href="https://thecorcoran.github.io/MS-Math/" class="hover:text-slate-600 transition">The Curriculum of the River</a>
+  <!-- MINIMAL FOOTER -->
+  <footer class="border-t border-borderParchment py-5 px-6 bg-white/60 text-center text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <span>Jonathan M. Corcoran · Olympia, Washington</span>
+      <div class="flex items-center space-x-4">
+        <button onclick="toggleAboutModal()" class="hover:text-river-900 underline">About Me</button>
         <span>·</span>
-        <a href="https://thecorcoran.github.io/Marcel-Reader/" class="hover:text-slate-600 transition">The Gabriel Marcel Reader</a>
-        <span>·</span>
-        <a href="https://github.com/thecorcoran" target="_blank" class="hover:text-slate-600 transition">GitHub Profile</a>
-      </p>
+        <a href="mailto:thecorcoran@gmail.com" class="hover:text-river-900 underline">thecorcoran@gmail.com</a>
+      </div>
     </div>
   </footer>
+
+  <!-- ABOUT ME MODAL DIALOG -->
+  <div id="about-modal" class="fixed inset-0 z-50 bg-river-900/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl border border-borderParchment max-w-md w-full p-6 sm:p-7 space-y-4 shadow-2xl relative" onclick="event.stopPropagation()">
+      <div class="flex items-start justify-between border-b border-borderParchment pb-3">
+        <h3 class="font-cormorant text-2xl font-bold text-river-900">About Jonathan M. Corcoran</h3>
+        <button onclick="toggleAboutModal()" class="text-slate-400 hover:text-river-900 text-2xl leading-none px-1">&times;</button>
+      </div>
+      <div class="space-y-3 text-sm text-slate-700 leading-relaxed">
+        <p>
+          I am an educator, craftsman, and independent builder based on a homestead in Olympia, Washington.
+        </p>
+        <p>
+          My work centers on classical mathematics curriculum, open early literacy tools, traditional timber craft, and personalist philosophy.
+        </p>
+        <p>
+          You can reach me directly at:
+        </p>
+        <div>
+          <a href="mailto:thecorcoran@gmail.com" class="font-semibold text-river-900 hover:text-amberwood underline">
+            thecorcoran@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="pt-2 border-t border-borderParchment flex justify-end">
+        <button onclick="toggleAboutModal()" class="text-xs uppercase tracking-wider bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-1.5 rounded-full font-medium transition">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleAboutModal() {
+      const modal = document.getElementById('about-modal');
+      modal.classList.toggle('hidden');
+    }
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('about-modal').classList.add('hidden');
+      }
+    });
+    document.getElementById('about-modal').addEventListener('click', () => {
+      document.getElementById('about-modal').classList.add('hidden');
+    });
+  </script>
 
 </body>
 </html>
