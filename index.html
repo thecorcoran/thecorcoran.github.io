@@ -61,7 +61,7 @@
         Curriculum, Reading Tools, Building & Notes
       </h1>
       <p class="hero-intro">
-        A personal collection of working projects, small utilities, and experiments. Some are well-documented, others are in progress—spanning classical mathematics, digital readers, distraction-free writing, and timber craft.
+        A personal collection of working projects, small utilities, and experiments. Some are well-documented, others are in progress—spanning classical mathematics, digital readers, boat design archives, distraction-free writing, and timber craft.
       </p>
 
       <div class="hero-actions">
@@ -81,7 +81,7 @@
       <div class="section-head">
         <div>
           <h2 class="section-title">Projects & Working Ideas</h2>
-          <p class="section-subtitle">Live tools, curriculum frameworks, writing environments, and build journals.</p>
+          <p class="section-subtitle">Live tools, curriculum frameworks, boat archives, writing environments, and build journals.</p>
         </div>
         
         <!-- SEARCH BOX -->
@@ -97,7 +97,7 @@
       <!-- CATEGORY FILTER PILLS -->
       <div class="filter-bar" role="tablist" aria-label="Project categories">
         <button class="filter-pill active" data-category="all" role="tab" aria-selected="true">
-          All Works <span class="pill-count" id="count-all">9</span>
+          All Works <span class="pill-count" id="count-all">10</span>
         </button>
         <button class="filter-pill" data-category="curriculum" role="tab" aria-selected="false">
           Curriculum & Math <span class="pill-count">1</span>
@@ -109,7 +109,7 @@
           Web Tools & Utilities <span class="pill-count">3</span>
         </button>
         <button class="filter-pill" data-category="craft" role="tab" aria-selected="false">
-          Building & Hardware <span class="pill-count">2</span>
+          Building, Boats & Hardware <span class="pill-count">3</span>
         </button>
       </div>
 
@@ -272,7 +272,46 @@
           </div>
         </article>
 
-        <!-- 5. MINI-BOOK MAKER -->
+        <!-- 5. SPIRA BOATS DIGITAL ARCHIVE -->
+        <article class="project-card" data-category="craft" data-keywords="spira boats jeff spira boat design digital archive plywood boat building naval architecture maritime craft the sea">
+          <div class="card-header">
+            <span class="status-badge badge-live">
+              <i class="fa-solid fa-circle-check"></i> Live Archive
+            </span>
+            <span class="category-tag">Boat Building & The Sea</span>
+          </div>
+
+          <div class="card-body">
+            <h3 class="project-title">
+              <a href="https://thecorcoran.github.io/Spira-Boats/" target="_blank" rel="noopener noreferrer">
+                Jeff Spira Boat Design Archive
+              </a>
+            </h3>
+            <p class="project-tagline">
+              A digital archive preserving and organizing the plywood boat designs and manuals of Jeff Spira.
+            </p>
+            <p class="project-description">
+              Collects, indexes, and makes accessible the boat building designs, stitch-and-glue plans, framing diagrams, and construction guides created by renowned naval designer Jeff Spira.
+            </p>
+            <div class="tech-tags">
+              <span class="tag">Plywood Boats</span>
+              <span class="tag">Boat Building</span>
+              <span class="tag">Digital Archive</span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <a href="https://github.com/thecorcoran/Spira-Boats" target="_blank" rel="noopener noreferrer" class="link-repo">
+              <i class="fa-brands fa-github"></i> GitHub Repo
+            </a>
+            <a href="https://thecorcoran.github.io/Spira-Boats/" target="_blank" rel="noopener noreferrer" class="btn-action">
+              <span>Open Archive</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 6. MINI-BOOK MAKER -->
         <article class="project-card" data-category="tools" data-keywords="mini book maker decodable phonics early literacy pocket book print 8-page imposition paper craft education minibook">
           <div class="card-header">
             <span class="status-badge badge-live">
@@ -311,7 +350,7 @@
           </div>
         </article>
 
-        <!-- 6. WEEKLY SCHEDULE PLANNER (ONTHEFRIG) -->
+        <!-- 7. WEEKLY SCHEDULE PLANNER (ONTHEFRIG) -->
         <article class="project-card" data-category="tools" data-keywords="weekly schedule planner onthefrig fridge calendar routine time blocking household chores home economy planner print">
           <div class="card-header">
             <span class="status-badge badge-live">
@@ -350,7 +389,7 @@
           </div>
         </article>
 
-        <!-- 7. PROJECT MORADA -->
+        <!-- 8. PROJECT MORADA -->
         <article class="project-card" data-category="tools" data-keywords="project morada interior castle teresa of avila writing engine markdown scriptorium chambers contemplative scholar desk morada">
           <div class="card-header">
             <span class="status-badge badge-live">
@@ -389,7 +428,7 @@
           </div>
         </article>
 
-        <!-- 8. BUILDING OUR WOODSHED (YOUTUBE SERIES) -->
+        <!-- 9. BUILDING OUR WOODSHED (YOUTUBE SERIES) -->
         <article class="project-card" data-category="craft" data-keywords="building our woodshed youtube video timber framing construction carpentry woodworking dispatches mom craft shed building">
           <div class="card-header">
             <span class="status-badge badge-video">
@@ -426,7 +465,7 @@
           </div>
         </article>
 
-        <!-- 9. ADAWRITER -->
+        <!-- 10. ADAWRITER -->
         <article class="project-card" data-category="craft" data-keywords="adawriter typewriter e-paper e-ink raspberry pi python evdev distraction-free hardware waveshare keyboard mechanical writing">
           <div class="card-header">
             <span class="status-badge badge-hardware">
@@ -469,7 +508,7 @@
       <div id="no-results" class="no-results-box hidden">
         <i class="fa-solid fa-magnifying-glass"></i>
         <h3>No matching works found</h3>
-        <p>Try searching for terms like "Math", "Marcel", "Reading", "Building", or reset your filters.</p>
+        <p>Try searching for terms like "Math", "Marcel", "Reading", "Boats", "Building", or reset your filters.</p>
         <button id="reset-filter-btn" class="btn btn-secondary">Reset Search & Filters</button>
       </div>
 
@@ -552,6 +591,7 @@
               <option value="The Gabriel Marcel Reader">The Gabriel Marcel Reader</option>
               <option value="Adventure Books">Adventure Books</option>
               <option value="Great Books Audio Directory">Great Books Audio Directory</option>
+              <option value="Jeff Spira Boat Design Archive">Jeff Spira Boat Design Archive (Spira-Boats)</option>
               <option value="Mini-Book Maker">Mini-Book Maker (MiniBook)</option>
               <option value="Weekly Schedule Planner (OnTheFrig)">Weekly Schedule Planner (OnTheFrig)</option>
               <option value="Project Morada">Project Morada</option>
@@ -593,6 +633,8 @@
         <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer">Gabriel Marcel Reader</a>
         <span>·</span>
         <a href="https://thecorcoran.github.io/adventurebooks/" target="_blank" rel="noopener noreferrer">Adventure Books</a>
+        <span>·</span>
+        <a href="https://thecorcoran.github.io/Spira-Boats/" target="_blank" rel="noopener noreferrer">Spira-Boats</a>
         <span>·</span>
         <a href="https://github.com/thecorcoran" target="_blank" rel="noopener noreferrer">GitHub</a>
         <span>·</span>
