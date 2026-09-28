@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonathan M. Corcoran · Projects, Ideas & Notes</title>
-  <meta name="description" content="Working projects, curriculum drafts, reading tools, building notes, and ideas by Jonathan M. Corcoran in the Pacific Northwest.">
+  <title>Jonathan M. Corcoran · Projects, Utilities & Ideas</title>
+  <meta name="description" content="A personal collection of working projects, utilities, and ideas by Jonathan M. Corcoran in the Pacific Northwest.">
   <meta name="author" content="Jonathan M. Corcoran">
-  <meta property="og:title" content="Jonathan M. Corcoran · Projects, Ideas & Notes">
-  <meta property="og:description" content="Working projects, curriculum drafts, reading tools, building notes, and ideas.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://thecorcoran.github.io/">
 
-  <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Inter (Clean UI Sans) -->
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -33,9 +29,11 @@
       </a>
 
       <nav class="nav-links">
-        <a href="#projects" class="nav-link">Projects & Ideas</a>
+        <a href="#projects" class="nav-link">Projects</a>
         <a href="#about" class="nav-link">About</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="nav-link nav-feedback-highlight" title="Leave feedback or send a note">
+          <i class="fa-regular fa-comment-dots"></i> Feedback
+        </a>
         <a href="https://github.com/thecorcoran" target="_blank" rel="noopener noreferrer" class="nav-link nav-github" title="GitHub Profile">
           <i class="fa-brands fa-github"></i>
           <span>GitHub ↗</span>
@@ -53,20 +51,19 @@
 
     <!-- HERO INTRODUCTION -->
     <section class="hero-section">
-      <div class="hero-badge">
-        <span class="pulse-dot"></span>
-        <span>Working Projects & Ideas</span>
-      </div>
       <h1 class="hero-title">
-        Curriculum, Reading Tools, Building & Notes
+        Jonathan M. Corcoran
       </h1>
       <p class="hero-intro">
-        A personal collection of working projects, small utilities, and experiments. Some are well-documented, others are in progress—spanning classical mathematics, digital readers, boat design archives, distraction-free writing, and timber craft.
+        A personal collection of working projects, utilities, and ideas.
       </p>
 
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">
-          <i class="fa-solid fa-layer-group"></i> Browse Active Works
+          <i class="fa-solid fa-arrow-down"></i> Browse Projects
+        </a>
+        <a href="#contact" class="btn btn-feedback">
+          <i class="fa-solid fa-pen-nib"></i> Leave Feedback
         </a>
         <a href="#about" class="btn btn-secondary">
           <i class="fa-solid fa-user"></i> About Jonathan
@@ -74,442 +71,436 @@
       </div>
     </section>
 
-    <!-- ACTIVE WORKS & PROJECTS SECTION -->
+    <!-- ACTIVE WORKS & PROJECTS SECTION (CLEAR THEMATIC ORGANIZATION) -->
     <section id="projects" class="projects-section">
       
-      <!-- SECTION HEADER WITH CONTROLS -->
+      <!-- SECTION HEADER WITH SEARCH -->
       <div class="section-head">
         <div>
           <h2 class="section-title">Projects & Working Ideas</h2>
-          <p class="section-subtitle">Live tools, curriculum frameworks, boat archives, writing environments, and build journals.</p>
+          <p class="section-subtitle">Organized by topic. Click any title or button to open the live site.</p>
         </div>
         
         <!-- SEARCH BOX -->
         <div class="search-wrapper">
           <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          <input type="text" id="project-search" placeholder="Search projects by topic, name, or tool..." aria-label="Search projects">
+          <input type="text" id="project-search" placeholder="Search projects by keyword..." aria-label="Search projects">
           <button id="clear-search" class="clear-search-btn hidden" aria-label="Clear search">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
       </div>
 
-      <!-- CATEGORY FILTER PILLS -->
+      <!-- FILTER TABS -->
       <div class="filter-bar" role="tablist" aria-label="Project categories">
         <button class="filter-pill active" data-category="all" role="tab" aria-selected="true">
-          All Works <span class="pill-count" id="count-all">10</span>
+          All Works <span class="pill-count" id="count-all">11</span>
         </button>
-        <button class="filter-pill" data-category="curriculum" role="tab" aria-selected="false">
-          Curriculum & Math <span class="pill-count">1</span>
+        <button class="filter-pill" data-category="reading" role="tab" aria-selected="false">
+          Reading Rooms & Literature <span class="pill-count">3</span>
         </button>
-        <button class="filter-pill" data-category="readers" role="tab" aria-selected="false">
-          Reading & Philosophy <span class="pill-count">3</span>
+        <button class="filter-pill" data-category="education" role="tab" aria-selected="false">
+          Teaching & Curriculum <span class="pill-count">2</span>
         </button>
-        <button class="filter-pill" data-category="tools" role="tab" aria-selected="false">
-          Web Tools & Utilities <span class="pill-count">3</span>
+        <button class="filter-pill" data-category="directories" role="tab" aria-selected="false">
+          Directories & Maps <span class="pill-count">1</span>
+        </button>
+        <button class="filter-pill" data-category="household" role="tab" aria-selected="false">
+          Household Tools <span class="pill-count">1</span>
         </button>
         <button class="filter-pill" data-category="craft" role="tab" aria-selected="false">
-          Building, Boats & Hardware <span class="pill-count">3</span>
+          Building, Boats & Hardware <span class="pill-count">4</span>
         </button>
       </div>
 
-      <!-- PROJECT GRID -->
-      <div class="projects-grid" id="projects-grid">
+      <!-- THEMATIC CATALOG -->
+      <div class="catalog-container" id="catalog-container">
 
-        <!-- 1. THE CURRICULUM OF THE RIVER -->
-        <article class="project-card" data-category="curriculum" data-keywords="curriculum river mathematics math middle school thomistic broadsheet grades 6 7 8 socratic geometry education latex">
-          <div class="card-header">
-            <span class="status-badge badge-live">
-              <i class="fa-solid fa-circle-check"></i> Live Site
-            </span>
-            <span class="category-tag">Classical Math · Grades 6–8</span>
+        <!-- ==========================================
+             THEME 1: DIGITAL READING ROOMS & LITERATURE
+             ========================================== -->
+        <div class="category-group" data-group="reading">
+          <div class="group-header">
+            <span class="group-num">I.</span>
+            <h3 class="group-title">Digital Reading Rooms & Literature</h3>
+            <span class="group-desc">Contemplative reading environments, translations, and audio libraries.</span>
           </div>
 
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://thecorcoran.github.io/MS-Math/" target="_blank" rel="noopener noreferrer">
-                The Curriculum of the River
-              </a>
-            </h3>
-            <p class="project-tagline">
-              A 3-year classical middle school mathematics curriculum built on 17" × 11" landscape broadsheets.
-            </p>
-            <p class="project-description">
-              Rooted in Thomistic abstraction and Socratic problem sequences, this curriculum replaces fragmented textbooks with comprehensive broadsheets synthesizing geometric intuition, arithmetic precision, and algebraic foundations.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Broadsheets</span>
-              <span class="tag">Thomistic Abstraction</span>
-              <span class="tag">Middle School Math</span>
-            </div>
+          <div class="group-cards">
+
+            <!-- 1. GABRIEL MARCEL READER -->
+            <article class="project-card" data-category="reading" data-keywords="gabriel marcel reader philosophy french phenomenology existentialism bilingual corpus drama christian personalism text reading">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Philosophy Corpus</span>
+                  <span class="badge-status live-status">Live Site</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer">
+                    The Gabriel Marcel Reader
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A digital reading room offering parallel French-English text viewing and search across the philosophical essays and dramatic plays of Christian existentialist Gabriel Marcel.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/Marcel-Reader" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open Reader</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- 2. ADVENTURE BOOKS -->
+            <article class="project-card" data-category="reading" data-keywords="adventure books maritime exploration wilderness journals voyage reading audio classics literature history library the sea adventurebooks">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Voyages & The Sea</span>
+                  <span class="badge-status live-status">Live Site</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/adventurebooks/" target="_blank" rel="noopener noreferrer">
+                    Adventure Books
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A clean digital reading space featuring primary source maritime voyages, polar expeditions, mountaineering journals, and wilderness narratives paired with audio recordings.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/adventurebooks" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/adventurebooks/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open Books</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+            <!-- 3. GREAT BOOKS AUDIO DIRECTORY -->
+            <article class="project-card" data-category="reading" data-keywords="great books greatbooks classical curriculum audio directory literature classics philosophy reading canon">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Classical Canon</span>
+                  <span class="badge-status live-status">Live Site</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/GreatBooks/" target="_blank" rel="noopener noreferrer">
+                    Great Books Audio Directory
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A curated 4-year classical literature and audio directory organizing foundational texts and paired audio recordings for sequential study.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/GreatBooks" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/GreatBooks/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open Directory</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ==========================================
+             THEME 2: TEACHING & CLASSROOM FRAMEWORKS
+             ========================================== -->
+        <div class="category-group" data-group="education">
+          <div class="group-header">
+            <span class="group-num">II.</span>
+            <h3 class="group-title">Teaching & Classroom Frameworks</h3>
+            <span class="group-desc">Open curricula, printable broadsheets, and early literacy tools.</span>
           </div>
 
-          <div class="card-footer">
-            <a href="https://github.com/thecorcoran/MS-Math" target="_blank" rel="noopener noreferrer" class="link-repo">
-              <i class="fa-brands fa-github"></i> GitHub Repo
-            </a>
-            <a href="https://thecorcoran.github.io/MS-Math/" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>Open Site</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
+          <div class="group-cards">
 
-        <!-- 2. GABRIEL MARCEL READER -->
-        <article class="project-card" data-category="readers" data-keywords="gabriel marcel reader philosophy french phenomenology existentialism bilingual corpus drama christian personalism text">
-          <div class="card-header">
-            <span class="status-badge badge-live">
-              <i class="fa-solid fa-circle-check"></i> Live Reader
-            </span>
-            <span class="category-tag">Philosophy Corpus</span>
-          </div>
+            <!-- 4. THE CURRICULUM OF THE RIVER -->
+            <article class="project-card" data-category="education" data-keywords="curriculum river mathematics math middle school thomistic broadsheet grades 6 7 8 socratic geometry education latex">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Classical Math · Grades 6–8</span>
+                  <span class="badge-status live-status">Live Site</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/MS-Math/" target="_blank" rel="noopener noreferrer">
+                    The Curriculum of the River
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A 3-year classical middle school mathematics curriculum built on 17" × 11" landscape broadsheets synthesizing geometric intuition, arithmetic precision, and Thomistic abstraction.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/MS-Math" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/MS-Math/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open Curriculum</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
 
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer">
-                The Gabriel Marcel Reader
-              </a>
-            </h3>
-            <p class="project-tagline">
-              An open digital corpus and bilingual reading environment for Gabriel Marcel's philosophy.
-            </p>
-            <p class="project-description">
-              A responsive digital reading suite offering parallel French-English text viewing, notes, and search across the philosophical essays and dramatic plays of Christian existentialist Gabriel Marcel.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Bilingual French/English</span>
-              <span class="tag">Phenomenology</span>
-              <span class="tag">Digital Corpus</span>
-            </div>
-          </div>
+            <!-- 5. MINI-BOOK MAKER -->
+            <article class="project-card" data-category="education" data-keywords="mini book maker decodable phonics early literacy pocket book print 8-page imposition paper craft education minibook">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Early Literacy & Print</span>
+                  <span class="badge-status live-status">Live Site</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/MiniBook/" target="_blank" rel="noopener noreferrer">
+                    Mini-Book Maker
+                  </a>
+                </h4>
+                <p class="project-description">
+                  An in-browser print utility that formats custom phonics texts and illustrations onto a single standard sheet of paper, folding into an 8-page pocket book without staples.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/MiniBook" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/MiniBook/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open Tool</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
 
-          <div class="card-footer">
-            <a href="https://github.com/thecorcoran/Marcel-Reader" target="_blank" rel="noopener noreferrer" class="link-repo">
-              <i class="fa-brands fa-github"></i> GitHub Repo
-            </a>
-            <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>Open Reader</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
           </div>
-        </article>
+        </div>
 
-        <!-- 3. ADVENTURE BOOKS -->
-        <article class="project-card" data-category="readers" data-keywords="adventure books maritime exploration wilderness journals voyage reading audio classics literature history library the sea adventurebooks">
-          <div class="card-header">
-            <span class="status-badge badge-live">
-              <i class="fa-solid fa-circle-check"></i> Live App
-            </span>
-            <span class="category-tag">Voyages & The Sea</span>
-          </div>
-
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://thecorcoran.github.io/adventurebooks/" target="_blank" rel="noopener noreferrer">
-                Adventure Books
-              </a>
-            </h3>
-            <p class="project-tagline">
-              Curated digital reading environment and audio directory for classical exploration and wilderness accounts.
-            </p>
-            <p class="project-description">
-              A clean digital reading space featuring primary source maritime voyages, polar expeditions, mountaineering journals, and wilderness narratives paired with public domain audio recordings.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Maritime Journals</span>
-              <span class="tag">Audio & Text</span>
-              <span class="tag">Classic Narratives</span>
-            </div>
+        <!-- ==========================================
+             THEME 3: DIRECTORIES & CARTOGRAPHY
+             ========================================== -->
+        <div class="category-group" data-group="directories">
+          <div class="group-header">
+            <span class="group-num">III.</span>
+            <h3 class="group-title">Directories & Cartography</h3>
+            <span class="group-desc">Spatial registers and historical research directories.</span>
           </div>
 
-          <div class="card-footer">
-            <a href="https://github.com/thecorcoran/adventurebooks" target="_blank" rel="noopener noreferrer" class="link-repo">
-              <i class="fa-brands fa-github"></i> GitHub Repo
-            </a>
-            <a href="https://thecorcoran.github.io/adventurebooks/" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>Open Books</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
+          <div class="group-cards">
 
-        <!-- 4. GREAT BOOKS AUDIO DIRECTORY -->
-        <article class="project-card" data-category="readers" data-keywords="great books greatbooks classical curriculum audio directory literature classics philosophy reading">
-          <div class="card-header">
-            <span class="status-badge badge-live">
-              <i class="fa-solid fa-circle-check"></i> Live Directory
-            </span>
-            <span class="category-tag">Classical Canon & Audio</span>
-          </div>
+            <!-- 6. RELIGIOUS HOUSES DIRECTORY -->
+            <article class="project-card" data-category="directories" data-keywords="religious houses catholic monasteries abbeys convents map directory united states latin eastern cartography history theology church">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Map & Register</span>
+                  <span class="badge-status live-status">Live Site</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/Religious-Houses/" target="_blank" rel="noopener noreferrer">
+                    Directory of Catholic Religious Houses
+                  </a>
+                </h4>
+                <p class="project-description">
+                  An analytical directory and interactive map cataloging verified autonomous abbeys, monasteries, friaries, and convents across Latin and Eastern Catholic Churches in the United States.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/Religious-Houses" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/Religious-Houses/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open Directory</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
 
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://thecorcoran.github.io/GreatBooks/" target="_blank" rel="noopener noreferrer">
-                Great Books Audio Directory
-              </a>
-            </h3>
-            <p class="project-tagline">
-              A curated 4-year classical literature and audio directory presented in a clean interface.
-            </p>
-            <p class="project-description">
-              Organizes foundational works of Western thought, epic poetry, drama, and history alongside paired audio recordings and digital texts for sequential study.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Classical Canon</span>
-              <span class="tag">Audio Library</span>
-              <span class="tag">Open Directory</span>
-            </div>
           </div>
+        </div>
 
-          <div class="card-footer">
-            <a href="https://github.com/thecorcoran/GreatBooks" target="_blank" rel="noopener noreferrer" class="link-repo">
-              <i class="fa-brands fa-github"></i> GitHub Repo
-            </a>
-            <a href="https://thecorcoran.github.io/GreatBooks/" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>Open Directory</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- 5. SPIRA BOATS DIGITAL ARCHIVE -->
-        <article class="project-card" data-category="craft" data-keywords="spira boats jeff spira boat design digital archive plywood boat building naval architecture maritime craft the sea">
-          <div class="card-header">
-            <span class="status-badge badge-live">
-              <i class="fa-solid fa-circle-check"></i> Live Archive
-            </span>
-            <span class="category-tag">Boat Building & The Sea</span>
+        <!-- ==========================================
+             THEME 4: HOUSEHOLD & DAILY RHYTHM
+             ========================================== -->
+        <div class="category-group" data-group="household">
+          <div class="group-header">
+            <span class="group-num">IV.</span>
+            <h3 class="group-title">Household & Daily Rhythm</h3>
+            <span class="group-desc">Simple tools for family time-blocking and home economies.</span>
           </div>
 
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://thecorcoran.github.io/Spira-Boats/" target="_blank" rel="noopener noreferrer">
-                Jeff Spira Boat Design Archive
-              </a>
-            </h3>
-            <p class="project-tagline">
-              A digital archive preserving and organizing the plywood boat designs and manuals of Jeff Spira.
-            </p>
-            <p class="project-description">
-              Collects, indexes, and makes accessible the boat building designs, stitch-and-glue plans, framing diagrams, and construction guides created by renowned naval designer Jeff Spira.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Plywood Boats</span>
-              <span class="tag">Boat Building</span>
-              <span class="tag">Digital Archive</span>
-            </div>
+          <div class="group-cards">
+
+            <!-- 7. WEEKLY SCHEDULE PLANNER -->
+            <article class="project-card" data-category="household" data-keywords="weekly schedule planner onthefrig fridge calendar routine time blocking household chores home economy planner print">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Printable Routine Board</span>
+                  <span class="badge-status live-status">Live Site</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/OnTheFrig/" target="_blank" rel="noopener noreferrer">
+                    Weekly Schedule Planner (OnTheFrig)
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A minimalist time-blocking and household routine planner designed to organize weekly tasks and print high-contrast landscape sheets for the refrigerator.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/OnTheFrig" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/OnTheFrig/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open Planner</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ==========================================
+             THEME 5: BUILDING, BOATS & WORKSHOP
+             ========================================== -->
+        <div class="category-group" data-group="craft">
+          <div class="group-header">
+            <span class="group-num">V.</span>
+            <h3 class="group-title">Building, Boats & Workshop</h3>
+            <span class="group-desc">Boat design archives, timber carpentry, and hardware writing tools.</span>
           </div>
 
-          <div class="card-footer">
-            <a href="https://github.com/thecorcoran/Spira-Boats" target="_blank" rel="noopener noreferrer" class="link-repo">
-              <i class="fa-brands fa-github"></i> GitHub Repo
-            </a>
-            <a href="https://thecorcoran.github.io/Spira-Boats/" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>Open Archive</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
+          <div class="group-cards">
 
-        <!-- 6. MINI-BOOK MAKER -->
-        <article class="project-card" data-category="tools" data-keywords="mini book maker decodable phonics early literacy pocket book print 8-page imposition paper craft education minibook">
-          <div class="card-header">
-            <span class="status-badge badge-live">
-              <i class="fa-solid fa-circle-check"></i> Live App
-            </span>
-            <span class="category-tag">Early Literacy & Print</span>
-          </div>
+            <!-- 8. SPIRA BOATS DIGITAL ARCHIVE -->
+            <article class="project-card" data-category="craft" data-keywords="spira boats jeff spira boat design digital archive plywood boat building naval architecture maritime craft the sea">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Boat Building Archive</span>
+                  <span class="badge-status live-status">Live Site</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/Spira-Boats/" target="_blank" rel="noopener noreferrer">
+                    Jeff Spira Boat Design Archive
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A digital archive collecting and organizing the plywood boat plans, stitch-and-glue construction manuals, and naval designs of Jeff Spira.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/Spira-Boats" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/Spira-Boats/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open Archive</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
 
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://thecorcoran.github.io/MiniBook/" target="_blank" rel="noopener noreferrer">
-                Mini-Book Maker
-              </a>
-            </h3>
-            <p class="project-tagline">
-              In-browser utility that formats 8-page foldable decodable pocket books from a single sheet of paper.
-            </p>
-            <p class="project-description">
-              Formats custom phonics texts, word exercises, and illustrations onto a single standard sheet with folding and cutting guides to produce a pocket booklet without staples.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Single-Sheet Imposition</span>
-              <span class="tag">Phonics & Early Reading</span>
-              <span class="tag">Print Ready</span>
-            </div>
-          </div>
+            <!-- 9. BUILDING OUR WOODSHED -->
+            <article class="project-card" data-category="craft" data-keywords="building our woodshed youtube video timber framing construction carpentry woodworking dispatches mom craft shed building">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">12 Episodes · Timber Craft</span>
+                  <span class="badge-status media-status">Video Series</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" rel="noopener noreferrer">
+                    Building Our Woodshed: Dispatches for Mom
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A 12-part timber construction build journal documenting the framing, rafter math, and hand-raising of an 8' × 40' single-slope woodshed.
+                </p>
+              </div>
+              <div class="card-footer">
+                <span class="card-meta"><i class="fa-brands fa-youtube"></i> YouTube Playlist</span>
+                <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" rel="noopener noreferrer" class="btn-action btn-accent">
+                  <span>Watch Series</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
 
-          <div class="card-footer">
-            <a href="https://github.com/thecorcoran/MiniBook" target="_blank" rel="noopener noreferrer" class="link-repo">
-              <i class="fa-brands fa-github"></i> GitHub Repo
-            </a>
-            <a href="https://thecorcoran.github.io/MiniBook/" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>Open App</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
+            <!-- 10. ADAWRITER -->
+            <article class="project-card" data-category="craft" data-keywords="adawriter typewriter e-paper e-ink raspberry pi python evdev distraction-free hardware waveshare keyboard mechanical writing">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">E-Paper Typewriter</span>
+                  <span class="badge-status hardware-status">Hardware / Python</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" rel="noopener noreferrer">
+                    AdaWriter (v1.4.3)
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A distraction-free, appliance-style writing instrument powered by a Raspberry Pi and a 4.2" e-paper display with physical mechanical keyboard input.
+                </p>
+              </div>
+              <div class="card-footer">
+                <span class="card-meta"><i class="fa-solid fa-microchip"></i> Firmware & Spec</span>
+                <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>View Repository</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
 
-        <!-- 7. WEEKLY SCHEDULE PLANNER (ONTHEFRIG) -->
-        <article class="project-card" data-category="tools" data-keywords="weekly schedule planner onthefrig fridge calendar routine time blocking household chores home economy planner print">
-          <div class="card-header">
-            <span class="status-badge badge-live">
-              <i class="fa-solid fa-circle-check"></i> Live App
-            </span>
-            <span class="category-tag">Household Rhythm</span>
-          </div>
+            <!-- 11. PROJECT MORADA -->
+            <article class="project-card" data-category="craft" data-keywords="project morada interior castle teresa of avila writing engine markdown scriptorium chambers contemplative scholar desk morada">
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Writing Environment</span>
+                  <span class="badge-status live-status">Live App</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/Morada/" target="_blank" rel="noopener noreferrer">
+                    Project Morada
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A quiet desktop writing studio modeled on Saint Teresa of Ávila’s <em>Interior Castle</em>, organizing notes into nested Chambers backed by local Markdown files.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/Morada" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/Morada/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open App</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
 
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://thecorcoran.github.io/OnTheFrig/" target="_blank" rel="noopener noreferrer">
-                Weekly Schedule Planner
-              </a>
-            </h3>
-            <p class="project-tagline">
-              Minimalist time-blocking and household routine planner formatted for the refrigerator.
-            </p>
-            <p class="project-description">
-              A simple household tool to coordinate weekly lessons, chores, and family rhythms, generating clean, high-contrast printable landscape sheets for the fridge.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Landscape Print</span>
-              <span class="tag">Local Storage</span>
-              <span class="tag">Household Flow</span>
-            </div>
           </div>
-
-          <div class="card-footer">
-            <a href="https://github.com/thecorcoran/OnTheFrig" target="_blank" rel="noopener noreferrer" class="link-repo">
-              <i class="fa-brands fa-github"></i> GitHub Repo
-            </a>
-            <a href="https://thecorcoran.github.io/OnTheFrig/" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>Open App</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- 8. PROJECT MORADA -->
-        <article class="project-card" data-category="tools" data-keywords="project morada interior castle teresa of avila writing engine markdown scriptorium chambers contemplative scholar desk morada">
-          <div class="card-header">
-            <span class="status-badge badge-live">
-              <i class="fa-solid fa-circle-check"></i> Live App
-            </span>
-            <span class="category-tag">Contemplative Writing</span>
-          </div>
-
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://thecorcoran.github.io/Morada/" target="_blank" rel="noopener noreferrer">
-                Project Morada
-              </a>
-            </h3>
-            <p class="project-tagline">
-              A quiet writing environment modeled on Saint Teresa of Ávila’s <em>Interior Castle</em>.
-            </p>
-            <p class="project-description">
-              Organizes writing and reflections into nested Chambers, Mansions, and Scriptoriums backed by local Markdown files on disk without distractions or subscriptions.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Interior Castle Architecture</span>
-              <span class="tag">Local Markdown</span>
-              <span class="tag">Writing Desk</span>
-            </div>
-          </div>
-
-          <div class="card-footer">
-            <a href="https://github.com/thecorcoran/Morada" target="_blank" rel="noopener noreferrer" class="link-repo">
-              <i class="fa-brands fa-github"></i> GitHub Repo
-            </a>
-            <a href="https://thecorcoran.github.io/Morada/" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>Open App</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- 9. BUILDING OUR WOODSHED (YOUTUBE SERIES) -->
-        <article class="project-card" data-category="craft" data-keywords="building our woodshed youtube video timber framing construction carpentry woodworking dispatches mom craft shed building">
-          <div class="card-header">
-            <span class="status-badge badge-video">
-              <i class="fa-solid fa-film"></i> Video Journal
-            </span>
-            <span class="category-tag">12 Episodes · Timber Craft</span>
-          </div>
-
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" rel="noopener noreferrer">
-                Building Our Woodshed: Dispatches for Mom
-              </a>
-            </h3>
-            <p class="project-tagline">
-              A 12-part timber construction build journal of an 8' × 40' single-slope woodshed.
-            </p>
-            <p class="project-description">
-              A video chronicle documenting traditional timber carpentry, framing, rafter geometry, and building by hand, recorded as weekly dispatches for my mother.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">8' × 40' Timber Frame</span>
-              <span class="tag">Building by Hand</span>
-              <span class="tag">12 Video Episodes</span>
-            </div>
-          </div>
-
-          <div class="card-footer">
-            <span class="card-meta"><i class="fa-brands fa-youtube"></i> YouTube Playlist</span>
-            <a href="https://youtube.com/playlist?list=PLA4ByYd2SYBedumMs6mpOUhLC3wqhAigT" target="_blank" rel="noopener noreferrer" class="btn-action btn-accent">
-              <span>Watch Series</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
-
-        <!-- 10. ADAWRITER -->
-        <article class="project-card" data-category="craft" data-keywords="adawriter typewriter e-paper e-ink raspberry pi python evdev distraction-free hardware waveshare keyboard mechanical writing">
-          <div class="card-header">
-            <span class="status-badge badge-hardware">
-              <i class="fa-solid fa-microchip"></i> Hardware / Python
-            </span>
-            <span class="category-tag">E-Paper Typewriter</span>
-          </div>
-
-          <div class="card-body">
-            <h3 class="project-title">
-              <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" rel="noopener noreferrer">
-                AdaWriter (v1.4.3)
-              </a>
-            </h3>
-            <p class="project-tagline">
-              A distraction-free, appliance-style writing instrument powered by Raspberry Pi and 4.2" e-paper.
-            </p>
-            <p class="project-description">
-              Combines a physical mechanical keyboard with low-level Linux <code>evdev</code> input and high-contrast e-ink rendering. Designed for quiet, single-purpose writing.
-            </p>
-            <div class="tech-tags">
-              <span class="tag">Waveshare 4.2" E-Paper</span>
-              <span class="tag">Raspberry Pi + Python</span>
-              <span class="tag">Distraction-Free</span>
-            </div>
-          </div>
-
-          <div class="card-footer">
-            <span class="card-meta"><i class="fa-solid fa-microchip"></i> Firmware & Spec</span>
-            <a href="https://github.com/thecorcoran/AdaWriter" target="_blank" rel="noopener noreferrer" class="btn-action">
-              <span>GitHub Repo</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </article>
+        </div>
 
       </div>
 
       <!-- EMPTY STATE FOR SEARCH -->
       <div id="no-results" class="no-results-box hidden">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <h3>No matching works found</h3>
-        <p>Try searching for terms like "Math", "Marcel", "Reading", "Boats", "Building", or reset your filters.</p>
+        <h3>No matching projects found</h3>
+        <p>Try searching for terms like "Math", "Marcel", "Boats", "Houses", or reset your filters.</p>
         <button id="reset-filter-btn" class="btn btn-secondary">Reset Search & Filters</button>
+      </div>
+
+      <!-- INLINE FEEDBACK PROMPT BOX (MORE PLACES FOR FEEDBACK) -->
+      <div class="feedback-banner">
+        <div class="feedback-banner-text">
+          <i class="fa-regular fa-comment-dots"></i>
+          <span>Have thoughts, reflections, or feedback on any of these projects?</span>
+        </div>
+        <a href="#contact" class="btn btn-feedback-sm">Leave Feedback →</a>
       </div>
 
     </section>
@@ -563,7 +554,7 @@
     <section id="contact" class="contact-section">
       <div class="contact-card">
         <div class="contact-intro">
-          <span class="about-eyebrow">Direct Contact & Notes</span>
+          <span class="about-eyebrow">Direct Contact & Feedback</span>
           <h2 class="section-title">Send a Note or Feedback</h2>
           <p class="contact-desc">
             Have thoughts, reflections, questions, or ideas about any of the projects? You can write below or email me directly at <a href="mailto:thecorcoran@gmail.com" class="inline-email">thecorcoran@gmail.com</a>.
@@ -587,6 +578,7 @@
             <label for="project-select">Topic / Project Reference <span class="label-opt">(Optional)</span></label>
             <select id="project-select" name="project" class="form-select">
               <option value="General Note">General Note / Hello</option>
+              <option value="Directory of Catholic Religious Houses">Directory of Catholic Religious Houses</option>
               <option value="The Curriculum of the River">The Curriculum of the River (MS Math)</option>
               <option value="The Gabriel Marcel Reader">The Gabriel Marcel Reader</option>
               <option value="Adventure Books">Adventure Books</option>
@@ -628,13 +620,13 @@
       <div class="footer-links">
         <a href="#top">Back to Top ↑</a>
         <span>·</span>
+        <a href="#contact">Leave Feedback</a>
+        <span>·</span>
+        <a href="https://thecorcoran.github.io/Religious-Houses/" target="_blank" rel="noopener noreferrer">Religious Houses</a>
+        <span>·</span>
         <a href="https://thecorcoran.github.io/MS-Math/" target="_blank" rel="noopener noreferrer">Curriculum of the River</a>
         <span>·</span>
         <a href="https://thecorcoran.github.io/Marcel-Reader/" target="_blank" rel="noopener noreferrer">Gabriel Marcel Reader</a>
-        <span>·</span>
-        <a href="https://thecorcoran.github.io/adventurebooks/" target="_blank" rel="noopener noreferrer">Adventure Books</a>
-        <span>·</span>
-        <a href="https://thecorcoran.github.io/Spira-Boats/" target="_blank" rel="noopener noreferrer">Spira-Boats</a>
         <span>·</span>
         <a href="https://github.com/thecorcoran" target="_blank" rel="noopener noreferrer">GitHub</a>
         <span>·</span>
@@ -683,6 +675,7 @@
       const filterPills = document.querySelectorAll('.filter-pill');
       const searchInput = document.getElementById('project-search');
       const clearSearchBtn = document.getElementById('clear-search');
+      const categoryGroups = document.querySelectorAll('.category-group');
       const projectCards = document.querySelectorAll('.project-card');
       const noResultsBox = document.getElementById('no-results');
       const resetFilterBtn = document.getElementById('reset-filter-btn');
@@ -691,26 +684,40 @@
       let searchQuery = '';
 
       function filterProjects() {
-        let visibleCount = 0;
+        let totalVisible = 0;
         const query = searchQuery.trim().toLowerCase();
 
-        projectCards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
-          const cardText = card.innerText.toLowerCase();
+        categoryGroups.forEach(group => {
+          const groupCategory = group.getAttribute('data-group');
+          const cardsInGroup = group.querySelectorAll('.project-card');
+          let visibleInGroup = 0;
 
-          const matchesCategory = (currentCategory === 'all' || category === currentCategory);
-          const matchesSearch = !query || keywords.includes(query) || cardText.includes(query);
+          cardsInGroup.forEach(card => {
+            const category = card.getAttribute('data-category');
+            const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+            const cardText = card.innerText.toLowerCase();
 
-          if (matchesCategory && matchesSearch) {
-            card.classList.remove('hidden-card');
-            visibleCount++;
+            const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+            const matchesSearch = !query || keywords.includes(query) || cardText.includes(query);
+
+            if (matchesCategory && matchesSearch) {
+              card.classList.remove('hidden-card');
+              visibleInGroup++;
+              totalVisible++;
+            } else {
+              card.classList.add('hidden-card');
+            }
+          });
+
+          // Show/hide entire category section based on cards visibility
+          if (visibleInGroup > 0) {
+            group.classList.remove('hidden-group');
           } else {
-            card.classList.add('hidden-card');
+            group.classList.add('hidden-group');
           }
         });
 
-        if (visibleCount === 0) {
+        if (totalVisible === 0) {
           noResultsBox.classList.remove('hidden');
         } else {
           noResultsBox.classList.add('hidden');
@@ -783,7 +790,7 @@
           });
 
           if (response.ok) {
-            formStatus.textContent = '✓ Thank you! Your message has been sent directly to Jonathan.';
+            formStatus.textContent = '✓ Thank you! Your feedback has been sent directly to Jonathan.';
             formStatus.className = 'form-status status-success';
             form.reset();
           } else {
