@@ -625,6 +625,36 @@ body.dark-mode .filter-pill.active {
   box-shadow: var(--shadow-hover);
 }
 
+.card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: calc(var(--radius-md) - 3px);
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+}
+
+.card-thumb a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.project-card:hover .thumb-img {
+  transform: scale(1.03);
+}
+
 .project-card.hidden-card {
   display: none !important;
 }
