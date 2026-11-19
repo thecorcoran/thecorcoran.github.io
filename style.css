@@ -540,6 +540,75 @@ body.dark-mode .filter-pill.active {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
+/* Recently Worked On Strip */
+.recently-active-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-left: 3px solid var(--accent-amberwood);
+  border-radius: var(--radius-md);
+}
+
+.recently-active-bar.hidden {
+  display: none !important;
+}
+
+.recently-active-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-amberwood);
+  white-space: nowrap;
+}
+
+.recently-active-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.recent-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: border-color var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+}
+
+.recent-chip:hover {
+  border-color: var(--accent-amberwood);
+  color: var(--accent-amberwood);
+  transform: translateY(-1px);
+}
+
+.recent-chip-title {
+  font-weight: 600;
+}
+
+.recent-chip-date {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.recent-chip:hover .recent-chip-date {
+  color: var(--accent-amberwood);
+}
+
 /* ==========================================================================
    THEMATIC CATALOG & CARDS (TUFTE-INSPIRED STRUCTURE)
    ========================================================================== */
@@ -730,6 +799,24 @@ body.dark-mode .filter-pill.active {
   color: var(--text-secondary);
   line-height: 1.5;
   margin-top: 0.2rem;
+}
+
+.card-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.card-updated.is-recent {
+  color: var(--accent-amberwood);
+  font-weight: 500;
+}
+
+.card-updated i {
+  font-size: 0.7rem;
 }
 
 .card-footer {

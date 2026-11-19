@@ -94,7 +94,7 @@
       <!-- FILTER TABS -->
       <div class="filter-bar" role="tablist" aria-label="Project categories">
         <button class="filter-pill active" data-category="all" role="tab" aria-selected="true">
-          All Works <span class="pill-count" id="count-all">16</span>
+          All Works <span class="pill-count" id="count-all">17</span>
         </button>
         <button class="filter-pill" data-category="curriculum" role="tab" aria-selected="false">
           Curriculums and Supports <span class="pill-count">7</span>
@@ -106,8 +106,16 @@
           Directories &amp; Policy <span class="pill-count">2</span>
         </button>
         <button class="filter-pill" data-category="craft" role="tab" aria-selected="false">
-          Building, Boats &amp; Hardware <span class="pill-count">4</span>
+          Building, Boats &amp; Hardware <span class="pill-count">5</span>
         </button>
+      </div>
+
+      <!-- RECENTLY WORKED ON (AUTO-POPULATED FROM GITHUB REPO ACTIVITY) -->
+      <div id="recently-active-bar" class="recently-active-bar hidden" aria-label="Recently updated projects">
+        <span class="recently-active-label">
+          <i class="fa-regular fa-clock"></i> Recently Worked On
+        </span>
+        <div id="recently-active-list" class="recently-active-list"></div>
       </div>
 
       <!-- THEMATIC CATALOG -->
@@ -694,6 +702,39 @@
               </div>
             </article>
 
+            <!-- 16. WORDGOAL -->
+            <article class="project-card" data-category="craft" data-keywords="wordgoal word goal count tracker printable novel draft writing honeycomb hexagon pdf markdown docx nanowrimo daily writing">
+              <div class="card-thumb">
+                <a href="https://thecorcoran.github.io/wordgoal/" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+                  <img src="assets/previews/wordgoal.webp" alt="wordgoal preview screenshot" loading="lazy" class="thumb-img" width="800" height="500">
+                </a>
+              </div>
+
+              <div class="card-main">
+                <div class="card-meta-line">
+                  <span class="badge-tag">Writing Utility · Print</span>
+                  <span class="badge-status live-status">Live App</span>
+                </div>
+                <h4 class="project-title">
+                  <a href="https://thecorcoran.github.io/wordgoal/" target="_blank" rel="noopener noreferrer">
+                    wordgoal
+                  </a>
+                </h4>
+                <p class="project-description">
+                  A single-sheet printable word-count goal tracker with sequential honeycomb and 12-month calendar layouts, optional estimated end date, and PDF, Markdown, and Word exports.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="https://github.com/thecorcoran/wordgoal" target="_blank" rel="noopener noreferrer" class="link-repo">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+                <a href="https://thecorcoran.github.io/wordgoal/" target="_blank" rel="noopener noreferrer" class="btn-action">
+                  <span>Open App</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
           </div>
         </div>
 
@@ -770,6 +811,7 @@
               <option value="Weekly Schedule Planner (OnTheFrig)">Weekly Schedule Planner (OnTheFrig)</option>
               <option value="Heirloom Seed Envelope Maker">Heirloom Seed Envelope Maker (SeedPacket)</option>
               <option value="Story Desk">Story Desk</option>
+              <option value="Fact Garden">Fact Garden</option>
               <option value="The Gabriel Marcel Reader">The Gabriel Marcel Reader</option>
               <option value="Adventure Books">Adventure Books</option>
               <option value="The G.K. Chesterton Reader">The G.K. Chesterton Reader</option>
@@ -779,6 +821,7 @@
               <option value="Building Our Woodshed Series">Building Our Woodshed (Video Series)</option>
               <option value="AdaWriter E-Paper">AdaWriter (E-Paper Hardware)</option>
               <option value="Project Morada">Project Morada</option>
+              <option value="wordgoal">wordgoal (Printable Word-Count Tracker)</option>
             </select>
           </div>
 
@@ -998,6 +1041,163 @@
           submitBtn.innerHTML = originalBtnHtml;
         }
       });
+
+      // --- 4. LIVE GITHUB REPO LAST-UPDATED DATES & "RECENTLY WORKED ON" BAR ---
+      (async function loadRepoUpdates() {
+        const CACHE_KEY = 'thecorcoran_repo_updates_v1';
+        const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
+        const RECENT_DAYS = 14;
+        const MAX_RECENT_CHIPS = 4;
+
+        function formatRelativeOrDate(isoStr) {
+          const date = new Date(isoStr);
+          if (isNaN(date.getTime())) return null;
+          const now = new Date();
+          const diffMs = now.getTime() - date.getTime();
+          const diffDays = Math.floor(diffMs / 86400000);
+          const shortDate = date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: date.getFullYear() === now.getFullYear() ? undefined : 'numeric'
+          });
+          const fullDate = date.toLocaleDateString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+          });
+
+          let compact = shortDate;
+          if (diffDays <= 0) compact = 'Today';
+          else if (diffDays === 1) compact = 'Yesterday';
+          else if (diffDays < 7) compact = diffDays + 'd ago';
+
+          return {
+            date,
+            compact,
+            shortDate,
+            fullDate,
+            isRecent: diffDays >= 0 && diffDays <= RECENT_DAYS
+          };
+        }
+
+        function renderRepoUpdates(repoMap) {
+          const matchedProjects = [];
+
+          projectCards.forEach(card => {
+            const repoLink = card.querySelector('a[href^="https://github.com/thecorcoran/"]');
+            if (!repoLink) return;
+            const match = repoLink.getAttribute('href').match(/github\.com\/thecorcoran\/([^/?#]+)/i);
+            if (!match) return;
+
+            const repoKey = match[1].toLowerCase();
+            const pushedAt = repoMap[repoKey];
+            if (!pushedAt) return;
+
+            const info = formatRelativeOrDate(pushedAt);
+            if (!info) return;
+
+            const cardMain = card.querySelector('.card-main');
+            if (cardMain) {
+              let updatedEl = cardMain.querySelector('.card-updated');
+              if (!updatedEl) {
+                updatedEl = document.createElement('div');
+                updatedEl.className = 'card-updated';
+                cardMain.appendChild(updatedEl);
+              }
+              updatedEl.classList.toggle('is-recent', info.isRecent);
+              updatedEl.title = 'Last pushed to GitHub on ' + info.fullDate;
+              updatedEl.innerHTML =
+                '<i class="fa-regular fa-clock" aria-hidden="true"></i> ' +
+                '<span>Updated ' + info.compact + (info.compact === info.shortDate ? '' : ' · ' + info.shortDate) + '</span>';
+            }
+
+            const titleLink = card.querySelector('.project-title a');
+            if (titleLink) {
+              matchedProjects.push({
+                title: titleLink.textContent.trim(),
+                href: titleLink.getAttribute('href'),
+                pushedMs: info.date.getTime(),
+                compact: info.compact,
+                fullDate: info.fullDate
+              });
+            }
+          });
+
+          matchedProjects.sort((a, b) => b.pushedMs - a.pushedMs);
+          const topRecent = matchedProjects.slice(0, MAX_RECENT_CHIPS);
+
+          const bar = document.getElementById('recently-active-bar');
+          const list = document.getElementById('recently-active-list');
+          if (bar && list && topRecent.length > 0) {
+            list.innerHTML = '';
+            topRecent.forEach(item => {
+              const chip = document.createElement('a');
+              chip.className = 'recent-chip';
+              chip.href = item.href;
+              chip.target = '_blank';
+              chip.rel = 'noopener noreferrer';
+              chip.title = item.title + ' — last updated ' + item.fullDate;
+
+              const titleSpan = document.createElement('span');
+              titleSpan.className = 'recent-chip-title';
+              titleSpan.textContent = item.title;
+
+              const dateSpan = document.createElement('span');
+              dateSpan.className = 'recent-chip-date';
+              dateSpan.textContent = item.compact;
+
+              chip.appendChild(titleSpan);
+              chip.appendChild(dateSpan);
+              list.appendChild(chip);
+            });
+            bar.classList.remove('hidden');
+          }
+        }
+
+        let cached = null;
+        try {
+          const raw = localStorage.getItem(CACHE_KEY);
+          if (raw) cached = JSON.parse(raw);
+        } catch (err) {
+          // Ignore storage errors
+        }
+
+        if (cached && cached.repos && (Date.now() - cached.ts) < CACHE_TTL_MS) {
+          renderRepoUpdates(cached.repos);
+          return;
+        }
+
+        // Render stale cache immediately while refreshing in background
+        if (cached && cached.repos) {
+          renderRepoUpdates(cached.repos);
+        }
+
+        try {
+          const res = await fetch('https://api.github.com/users/thecorcoran/repos?per_page=100&sort=pushed', {
+            headers: { 'Accept': 'application/vnd.github+json' }
+          });
+          if (!res.ok) return;
+          const repos = await res.json();
+          if (!Array.isArray(repos)) return;
+
+          const repoMap = {};
+          repos.forEach(r => {
+            if (r && r.name && r.pushed_at) {
+              repoMap[r.name.toLowerCase()] = r.pushed_at;
+            }
+          });
+
+          try {
+            localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), repos: repoMap }));
+          } catch (err) {
+            // Ignore quota errors
+          }
+
+          renderRepoUpdates(repoMap);
+        } catch (err) {
+          // Offline or rate-limited; keep any cached display or stay hidden
+        }
+      })();
     });
   </script>
 
